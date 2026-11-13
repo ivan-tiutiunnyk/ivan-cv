@@ -16,7 +16,7 @@
 }
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){color-scheme:dark}}
 :root[data-theme="dark"]{color-scheme:dark}
-html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 70px);scroll-behavior:smooth}
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 70px);scroll-behavior:smooth;overflow-x:hidden}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto} *{transition:none!important;animation:none!important}}
 *{box-sizing:inherit;margin:0}
 body{background:var(--bg);color:var(--ink);font-family:"IBM Plex Sans",system-ui,sans-serif;font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
@@ -45,6 +45,7 @@ a{color:inherit}button{font:inherit;color:inherit;background:none;border:0;curso
 .pipe .bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--violet),var(--mint));transition:width .35s}
 .tbtn{height:36px;padding:0 12px;border-radius:8px;border:1px solid var(--rule);font-size:14px;font-weight:600;background:rgba(255,255,255,.05)}
 .tbtn[aria-pressed="true"]{border-color:var(--mint);color:var(--mint)}
+@media (max-width:640px){.top .wrap{gap:8px;height:56px}.brand{font-size:15px}.brand small{display:none}.pipe{font-size:13px}.pipe .bar{width:56px}.tbtn{padding:0 9px;font-size:13px}.hero{padding-top:24px}.hero .title{font-size:17px}.pitch{padding:16px}.proof{grid-template-columns:1fr 1fr}.proof .n{font-size:22px}.rel-h{grid-template-columns:auto 1fr;gap:10px;padding:14px}.rel-h .st{grid-column:2;justify-self:start}.rel-t{font-size:16px}.pad{display:block}}
 
 /* hero + pitch */
 .hero{padding:36px 0 10px;display:grid;gap:18px}
@@ -144,6 +145,8 @@ footer{padding:30px 0 240px;color:var(--ink-2);font-size:14px;text-align:center}
 .moon svg{width:100%;height:100%;display:block;overflow:visible}
 .wave{transform-origin:145px 98px;transform-box:view-box;animation:wave 1s ease-in-out infinite}
 @keyframes wave{0%,100%{transform:rotate(-25deg)}50%{transform:rotate(20deg)}}
+.rocket.landed{position:absolute;left:auto;right:36px;bottom:56px;transform:none;animation:none}
+@media (max-width:640px){.rocket.landed{right:24px;bottom:40px}}
 .bubble{position:absolute;left:-40px;top:52px;max-width:150px;background:#fff;color:#0D1326;border-radius:14px;padding:9px 12px;font-size:14px;font-weight:600;line-height:1.3;box-shadow:0 6px 24px rgba(0,0,0,.35);pointer-events:none;opacity:0;transform:translateY(8px);transition:opacity .4s .6s,transform .4s .6s}
 .bubble::after{content:"";position:absolute;right:-9px;top:14px;border:9px solid transparent;border-left-color:#fff;border-right:0}
 .moon.in .bubble{opacity:1;transform:none}
@@ -151,12 +154,12 @@ footer{padding:30px 0 240px;color:var(--ink-2);font-size:14px;text-align:center}
 @media (max-width:640px){.moon{width:210px;height:170px}.bubble{font-size:12px;max-width:120px;padding:8px 10px;left:-50px;top:34px}}
 
 /* launch pad rocket */
-.pad{position:fixed;right:max(4px,env(safe-area-inset-right,0px));bottom:calc(10px + env(safe-area-inset-bottom,0px));z-index:8;pointer-events:none;width:56px;height:140px}
-@media (max-width:640px){.pad{width:40px;height:110px;right:2px}.rocket{width:24px;height:60px}}
+.pad{position:fixed;right:max(4px,env(safe-area-inset-right,0px));bottom:calc(10px + env(safe-area-inset-bottom,0px));z-index:8;pointer-events:none;width:90px;height:230px}
+@media (max-width:640px){.pad{width:60px;height:150px;right:2px}.rocket{width:48px;height:120px}}
 .pad .ground{position:absolute;left:10px;right:10px;bottom:0;height:6px;border-radius:3px;background:rgba(196,204,232,.35)}
 .pad .ground::before,.pad .ground::after{content:"";position:absolute;bottom:6px;width:6px;height:22px;background:rgba(196,204,232,.35);border-radius:2px}
 .pad .ground::before{left:14px}.pad .ground::after{right:14px}
-.rocket{position:absolute;left:50%;bottom:8px;width:34px;height:84px;transform:translateX(-50%);will-change:transform}
+.rocket{position:absolute;left:50%;bottom:8px;width:68px;height:168px;transform:translateX(-50%);will-change:transform}
 .rocket svg{width:100%;height:100%;display:block;overflow:visible}
 .flame{transform-origin:17px 0;transform-box:view-box;animation:flicker .09s infinite alternate;opacity:0;filter:drop-shadow(0 0 6px #FFB84D)}
 .pad.lit .flame{opacity:1}
@@ -277,7 +280,7 @@ footer{padding:30px 0 240px;color:var(--ink-2);font-size:14px;text-align:center}
     <ellipse cx="260" cy="205" rx="26" ry="10" fill="#7A82A8"/><ellipse cx="257" cy="203" rx="19" ry="7" fill="#B3B9D8"/>
     <g id="astro">
       <!-- flag -->
-      <rect x="118" y="112" width="4" height="62" fill="#9B8CFF"/><path d="M122 113 L154 120 L122 127 Z" fill="#3DDC97"/>
+      <rect x="118" y="112" width="4" height="62" fill="#3DDC97"/><path d="M122 113 L154 120 L122 127 Z" fill="#3DDC97"/>
       <!-- backpack -->
       <rect x="186" y="112" width="14" height="34" rx="4" fill="#C9CFF0"/>
       <!-- legs and boots -->
@@ -299,6 +302,14 @@ footer{padding:30px 0 240px;color:var(--ink-2);font-size:14px;text-align:center}
       <rect x="158" y="110" width="32" height="6" rx="3" fill="#C9CFF0"/>
     </g>
   </svg>
+  <!-- the same rocket that flew, now landed next to the astronaut: identical markup and size -->
+  <div class="rocket landed" aria-hidden="true"><svg viewBox="0 0 34 84">
+    <path d="M17 0 C24 10 26 24 26 42 L26 60 L8 60 L8 42 C8 24 10 10 17 0 Z" fill="#F2F4FF"/>
+    <path d="M17 0 C24 10 26 24 26 42 L17 42 Z" fill="#C9CFF0"/>
+    <path d="M8 46 L0 62 L8 60 Z" fill="#9B8CFF"/><path d="M26 46 L34 62 L26 60 Z" fill="#9B8CFF"/>
+    <rect x="8" y="60" width="18" height="6" rx="2" fill="#5C6390"/>
+    <circle cx="17" cy="26" r="5" fill="#5FB2FF" stroke="#9B8CFF" stroke-width="2"/>
+  </svg></div>
 </div>
 <div class="pad" id="pad" aria-hidden="true">
   <div class="countdown" id="cd" hidden></div>
@@ -351,13 +362,13 @@ document.getElementById("rels").innerHTML=REL.map((r,i)=>`<div class="rel" id="r
    <div class="chips">${r.tools.map(t=>`<span class="chip">${t}</span>`).join("")}</div>
  </div></div>`).join("");
 const DOMAINS=[
- ["🚨","Waste management","US B2B platform, product owner, +15% MoM"],
+ ["🚨","Waste management","US B2B platform, product owner, +15% MoM",1],
  ["📦","Logistics","AI route planning, +30% efficiency",1],
  ["🎓","EdTech","Personalised learning, +80% engagement",1],
  ["🩺","HealthTech","Regulated delivery, 100% compliance"],
  ["💳","FinTech","Compliance-first, high-stakes releases"],
  ["✈️","Travel","High-load consumer platforms"],
- ["🏢","PropTech","Real-estate platforms at scale"],
+ ["🏢","PropTech","Real-estate platforms at scale",1],
  ["👥","HR tech","HRIS launched 0→1, 100% adoption"],
  ["📡","Telecom","Ericsson, Tier-1 US carriers, 99.9%"],
  ["🛒","Retail / duty-free","JTI global channel, IT and procurement"],
@@ -423,11 +434,11 @@ render();
 /* starfield */
 (()=>{const bg=document.getElementById("bg");const n=window.innerWidth<640?55:110;for(let i=0;i<n;i++){const s=document.createElement("i");const big=Math.random()<.12;const sz=big?3:(Math.random()<.5?1:2);s.style.cssText=`left:${Math.random()*100}%;top:${Math.random()*100}%;width:${sz}px;height:${sz}px;--d:${2.5+Math.random()*5}s;--dl:${-Math.random()*6}s`;if(big)s.className="big";bg.append(s)}
  for(let i=0;i<2;i++){const sh=document.createElement("div");sh.className="shoot";sh.style.cssText=`left:${55+Math.random()*40}%;top:${5+Math.random()*30}%;--dl:${-Math.random()*9+i*4}s`;bg.append(sh)}})();
-/* rocket: sits on the pad on the right; every scroll down lifts it a little, and it clears the screen as you reach the bottom */
+/* rocket: lifts gently while you read, then blasts off the moment the moon appears */
 (()=>{const pad=document.getElementById("pad"),r=document.getElementById("rocket"),cd=document.getElementById("cd");const reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;let target=0,cur=0,raf=null;
  function progress(){const max=document.documentElement.scrollHeight-window.innerHeight;return max>0?Math.min(1,(window.scrollY||0)/max):1}
- function want(){const p=progress();const h=window.innerHeight+220;const e=p*p*(3-2*p);return e*h}
- function tick(){cur+=(target-cur)*0.08;const sway=Math.sin(cur/80)*4*Math.min(1,cur/250);r.style.transform=`translateX(-50%) translateY(${-cur}px) rotate(${sway}deg)`;if(Math.abs(target-cur)>0.5)raf=requestAnimationFrame(tick);else raf=null}
+ function want(){const p=progress();const h=window.innerHeight+220;if(p>.93)return h;return (p/.93)*window.innerHeight*.35}
+ function tick(){const fast=target>window.innerHeight*.5;cur+=(target-cur)*(fast?0.06:0.08);const sway=Math.sin(cur/80)*4*Math.min(1,cur/250);r.style.transform=`translateX(-50%) translateY(${-cur}px) rotate(${sway}deg)`;if(Math.abs(target-cur)>0.5)raf=requestAnimationFrame(tick);else raf=null}
  function onScroll(){const p=progress();target=want();pad.classList.toggle("lit",p>.02);pad.classList.toggle("arm",false);pad.classList.toggle("gone",p>.02);cd.textContent="scroll to launch";document.getElementById("moon").classList.toggle("in",p>.93);
   if(reduce){cur=target;r.style.transform=`translateX(-50%) translateY(${-cur}px)`;return}if(!raf)raf=requestAnimationFrame(tick)}
  addEventListener("scroll",onScroll,{passive:true});addEventListener("resize",onScroll);onScroll()})();
