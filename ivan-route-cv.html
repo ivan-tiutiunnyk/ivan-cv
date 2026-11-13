@@ -1,496 +1,74 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Ivan Tiutiunnyk — Interactive CV · Product & Project Manager</title>
-<meta name="description" content="Interactive CV of Ivan Tiutiunnyk, Product and Project Manager: 10 years delivering software, from telecom infrastructure to AI products. Explore the career route and collect all ten stops.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Barlow+Semi+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
-<style>
-:root{
-  box-sizing:border-box;
-  padding-top:env(safe-area-inset-top,0px);
-  padding-bottom:env(safe-area-inset-bottom,0px);
-  --paper:#0B0E2A; --paper-2:#141A4A; --card:rgba(20,26,74,.55); --card-solid:#151B48; --ink:#FFFFFF; --ink-2:#C9D0F5; --rule:rgba(201,208,245,.35);
-  --amber:#FFB31F; --teal:#2CF2E2; --plum:#FF4FA8; --plum-soft:rgba(255,79,168,.16);
-  --ok:#5CF2A8; --focus:#8FB5FF;
-  --glow-a:0 0 14px rgba(255,179,31,.6); --glow-t:0 0 14px rgba(44,242,226,.6); --glow-p:0 0 14px rgba(255,79,168,.6);
-  --shadow:0 10px 40px rgba(0,0,0,.35), inset 0 1px 0 rgba(255,255,255,.08);
-  color-scheme:dark;
-}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){color-scheme:dark}}
-:root[data-theme="dark"]{color-scheme:dark}
-html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 70px);scroll-behavior:smooth}
-@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto} *{transition:none!important;animation:none!important}}
-*{box-sizing:inherit;margin:0}
-body{background:var(--paper);color:var(--ink);font-family:"Barlow",system-ui,sans-serif;font-size:18px;line-height:1.55;-webkit-font-smoothing:antialiased;position:relative;overflow-x:hidden}
-body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--paper);z-index:10}
-.bg{position:fixed;inset:0;z-index:-1;overflow:hidden;background:
-  radial-gradient(900px 500px at 15% -10%,rgba(255,79,168,.28),transparent 60%),
-  radial-gradient(700px 500px at 100% 20%,rgba(44,242,226,.22),transparent 60%),
-  radial-gradient(800px 600px at 50% 110%,rgba(255,179,31,.18),transparent 60%),
-  var(--paper)}
-.bg::before{content:"";position:absolute;inset:-50%;background-image:linear-gradient(rgba(154,163,214,.14) 1px,transparent 1px),linear-gradient(90deg,rgba(154,163,214,.14) 1px,transparent 1px);background-size:56px 56px;transform:perspective(600px) rotateX(60deg) translateY(10%);animation:gridmove 14s linear infinite;mask-image:linear-gradient(transparent,black 40%,black 70%,transparent)}
-@keyframes gridmove{to{background-position:0 56px,0 0}}
-.bg i{position:absolute;width:3px;height:3px;border-radius:50%;background:#fff;opacity:.6;animation:twinkle 4s ease-in-out infinite}
-@keyframes twinkle{0%,100%{opacity:.15;transform:scale(.7)}50%{opacity:.9;transform:scale(1.3)}}
-a{color:inherit}
-button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
-:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
-.wrap{max-width:760px;margin:0 auto;padding:0 20px}
 
-/* top bar */
-.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:9;background:rgba(11,14,42,.7);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--rule)}
-.top .wrap{display:flex;align-items:center;gap:14px;height:62px}
-.brand{font-family:"Barlow Semi Condensed",sans-serif;font-weight:700;font-size:20px;letter-spacing:.01em}
-.brand small{display:block;font-weight:500;font-size:12px;color:var(--ink-2);letter-spacing:.04em}
-.spacer{flex:1}
-.meter{display:flex;align-items:center;gap:8px;font-weight:600;font-size:14px}
-.meter .bar{width:84px;height:8px;border-radius:4px;background:rgba(255,255,255,.1);overflow:hidden}
-.meter .bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--amber),var(--teal),var(--plum));box-shadow:var(--glow-p);transition:width .35s}
-.tbtn{height:36px;padding:0 12px;border-radius:18px;border:1px solid var(--rule);font-size:14px;font-weight:600;background:rgba(255,255,255,.06)}
-.tbtn[aria-pressed="true"]{border-color:var(--teal);color:var(--teal);box-shadow:var(--glow-t)}
+Ivan Tiutiunnyk · CV
+Product & Project Manager
 
-/* boarding pass hero */
-.hero{padding:40px 0 20px}
-.pass{position:relative;border-radius:18px;padding:2px;background:linear-gradient(135deg,var(--amber),var(--teal) 50%,var(--plum));box-shadow:0 0 50px rgba(44,242,226,.25),0 0 90px rgba(255,79,168,.18);animation:passglow 5s ease-in-out infinite}
-@keyframes passglow{0%,100%{box-shadow:0 0 50px rgba(44,242,226,.25),0 0 90px rgba(255,79,168,.18)}50%{box-shadow:0 0 70px rgba(255,79,168,.35),0 0 110px rgba(44,242,226,.22)}}
-.pass::after{content:"";position:absolute;inset:2px;border-radius:16px;background:linear-gradient(120deg,transparent 30%,rgba(255,255,255,.12) 50%,transparent 70%);background-size:300% 100%;animation:sheen 6s linear infinite;pointer-events:none}
-@keyframes sheen{to{background-position:-300% 0}}
-.pass-in{position:relative;background:linear-gradient(160deg,#171E55,#0E1238);border-radius:16px;padding:26px;display:grid;gap:14px;z-index:1}
-.pass h1{font-family:"Barlow Semi Condensed",sans-serif;font-weight:700;font-size:clamp(36px,8vw,58px);line-height:1;letter-spacing:-.01em;color:#fff;text-shadow:0 0 18px rgba(44,242,226,.55)}
-.pass .role{font-size:19px;font-weight:500;color:#fff}
-.pass .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px 20px;border-top:1px dashed var(--rule);padding-top:14px}
-.pass .k{font-size:12px;color:var(--ink-2);font-weight:600}
-.pass .v{font-weight:600}
-.live{display:inline-flex;align-items:center;gap:8px}
-.live b{width:9px;height:9px;border-radius:50%;background:var(--ok);display:inline-block;box-shadow:0 0 10px var(--ok);animation:pulse 2s infinite}
-@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(92,242,168,.6)}60%{box-shadow:0 0 0 10px rgba(92,242,168,0)}}
-.cta{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:6px}
-.btn{display:inline-flex;align-items:center;gap:8px;height:46px;padding:0 20px;border-radius:23px;background:linear-gradient(90deg,var(--plum),#FF7A45);color:#120A1A;font-weight:700;font-size:16px;text-decoration:none;box-shadow:var(--glow-p);transition:transform .15s}
-.btn:hover{transform:translateY(-2px)}
-.btn.ghost{background:rgba(255,255,255,.06);color:var(--ink);border:1px solid var(--rule);box-shadow:none}
-.btn:disabled{opacity:.45;cursor:not-allowed}
-.hint{font-size:14px;color:var(--ink-2)}
+0/5
 
-/* sections */
-section{padding:28px 0}
-h2{font-family:"Barlow Semi Condensed",sans-serif;font-weight:700;font-size:30px;line-height:1.1;margin-bottom:6px}
-h2::before{content:"";display:inline-block;width:10px;height:10px;border-radius:50%;background:var(--teal);box-shadow:var(--glow-t);margin-right:10px;vertical-align:middle}
-.lead{color:var(--ink-2);margin-bottom:18px;max-width:60ch}
-.map,.sched,.waybill,.card,.finale{background:rgba(14,18,56,.82);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid var(--rule);border-radius:18px;box-shadow:var(--shadow);padding:18px}
+Music off
+Ivan Tiutiunnyk
+Product & Project Manager · 10 years shipping software for startups, scale-ups and enterprise clients
 
-/* route map */
-.map{padding:18px 14px}
-.map svg{width:100%;height:auto;display:block;overflow:visible}
-.line{stroke-linecap:round;stroke-linejoin:round;fill:none}
-.line.glow{filter:url(#glow);opacity:.75}
-.line.flow{stroke:rgba(255,255,255,.75);stroke-width:3;stroke-dasharray:4 22;animation:flow 1.6s linear infinite}
-@keyframes flow{to{stroke-dashoffset:-26}}
-.stop{cursor:pointer}
-.stop circle.ring{fill:#0E1238;stroke-width:5;transition:r .2s}
-.stop:hover circle.ring,.stop:focus-visible circle.ring{r:14;filter:url(#glow)}
-.stop text{font-family:"Barlow",sans-serif;fill:var(--ink);font-size:15px;font-weight:600}
-.stop text.sub{fill:var(--ink-2);font-size:14px;font-weight:500}
-.stop .yr{fill:var(--ink-2);font-size:13px;font-weight:700;text-anchor:end}
-.stop:not(.done) circle.ring{animation:ringpulse 2.2s ease-in-out infinite}
-@keyframes ringpulse{0%,100%{stroke-width:5}50%{stroke-width:10}}
-.stop.done circle.ring{fill:currentColor;filter:url(#glow)}
-.stop.done .tick{display:block}
-.tick{display:none;fill:#0B0E2A;font-size:12px;font-weight:700;text-anchor:middle;pointer-events:none}
-.tapme{font:700 13px Barlow;fill:#120A1A}
-.tapme-bg{fill:var(--teal);filter:url(#glow)}
-.legend{display:flex;gap:18px;flex-wrap:wrap;margin-top:14px;font-size:14px;color:var(--ink-2)}
-.legend span{display:inline-flex;align-items:center;gap:7px}
-.legend i{width:18px;height:5px;border-radius:3px;display:inline-block}
+Open to new roles Remote · base Valencia, Spain Currently working from APAC (UTC+8) B2B contract or employment, EU-wide
+Why you’d want me on the team
+I take products from idea to production and keep them growing afterwards. Client-facing from day one, comfortable with AI, regulated domains and high-load systems, and I run the delivery side so founders and engineers can focus on building. Certified Scrum Master (PSM II) and Product Owner@Scale, with a finance master’s behind the business side.
++15% MoM
+client growth on a US B2B platform I own as PM
+0 → 1
+internal HRIS launched to 100% adoption, −70% admin time
+−25%
+time-to-market across a 6-domain client portfolio
+99.9%
+reliability on telecom platforms for Verizon, AT&T, T-Mobile
+Good fit for
+Enterprise
+Established businesses
+Scale-ups
+Startups
+Product consultancies
+AI products
+FinTech / HealthTech
+Certified PSM IIPSM IRegistered Product Owner@ScaleScrum@Scale FundamentalsICAgile ICP-ATFProduct Manager Bootcamp, Asta Academy Review the release historyPlay music
+Five releases, newest first. Open all five to unlock a direct line to me.
+Email
+tyutyunnik.i.a@gmail.com
+Copy
+LinkedIn
+in/ivan-tiutiunnyk
+Open
+Availability
+Can start on short notice
+Domains I’ve shipped in
+Eleven industries over ten years. Regulated, high-load and AI-driven products included.
+Release history
+My career as a changelog: newest release on top. Each entry opens to the three things that mattered; opening one passes a pipeline stage.
 
-/* schedule */
-.sched{overflow-x:auto}
-.sched-in{min-width:560px}
-.axis{display:grid;grid-template-columns:repeat(11,1fr);font-size:12px;color:var(--ink-2);margin-bottom:8px}
-.rowt{display:grid;grid-template-columns:150px 1fr;align-items:center;gap:10px;margin:6px 0}
-.rowt .lab{font-size:14px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.rowt .track{position:relative;height:26px;background:repeating-linear-gradient(90deg,transparent 0 calc(100%/11 - 1px),var(--rule) calc(100%/11 - 1px) calc(100%/11));border-radius:6px}
-.rowt .seg{position:absolute;top:0;height:26px;border-radius:6px;border:0;color:#0B0E2A;font-size:13px;font-weight:700;padding:0 8px;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;text-align:left;}
-.rowt .seg.done::after{content:"\2713";position:absolute;right:7px;top:0;line-height:26px}
+Stack & credentials
+How I work
+Certifications
+	•	Professional Scrum Master II and I (PSM II, PSM I)
+	•	Registered Product Owner@Scale · Scrum@Scale Fundamentals
+	•	ICAgile Certified Professional, Agile Team Facilitation
+	•	Product Manager Bootcamp, Asta Academy
+	•	IT Project Management (MindsetPM) · Kepner-Tregoe
+Education
+	•	Master’s in Banking, University of Banking of the National Bank of Ukraine, 2016
+	•	Bachelor’s in Finance and Credit, Kharkiv Institute of Banking, 2014
+Languages
+	•	English, professional
+	•	Ukrainian, native
+Deploy to production
+Pipeline passes when all five releases are reviewed. Then tell me who you are and I’ll know who to expect.
+5 stages left to review.
+Your name
 
-/* waybill */
-.stamps{display:grid;grid-template-columns:repeat(auto-fill,minmax(118px,1fr));gap:10px;margin-top:12px}
-.stamp{border:2px dashed var(--rule);border-radius:10px;padding:10px;min-height:66px;font-size:13px;font-weight:600;color:var(--ink-2);display:flex;flex-direction:column;justify-content:space-between;text-align:left;background:rgba(255,255,255,.03)}
-.stamp.done{border-style:solid;border-color:var(--c);color:var(--ink);transform:rotate(-1.5deg);box-shadow:0 0 16px var(--c),inset 0 0 20px rgba(255,255,255,.05);background:linear-gradient(135deg,rgba(255,255,255,.1),transparent)}
-.stamp.done small{color:var(--c)}
-.stamp small{font-size:11px;font-weight:600}
+Company
 
-/* depot & info */
-.two{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-@media (max-width:640px){.two{grid-template-columns:1fr}}
-.card h3{font-family:"Barlow Semi Condensed",sans-serif;font-size:21px;font-weight:700;margin-bottom:8px;color:#fff}
-.card ul{padding-left:18px;margin:0}
-.card li{margin:4px 0}
-.contact{display:grid;gap:10px}
-.crow{display:flex;align-items:center;gap:10px;justify-content:space-between;border-top:1px solid var(--rule);padding-top:10px}
-.crow:first-child{border:0;padding-top:0}
-.crow .k{font-size:12px;color:var(--ink-2);font-weight:600}
-.crow .v{font-weight:600;word-break:break-all}
-.mini{height:32px;padding:0 12px;border-radius:16px;border:1px solid var(--teal);color:#fff;background:rgba(44,242,226,.12);font-size:13px;font-weight:600;white-space:nowrap;text-decoration:none;display:inline-flex;align-items:center}
+Role you have in mind (optional)
 
-/* finale */
-.finale{padding:22px;position:relative;overflow:hidden}
-.finale.locked{opacity:.75}
-.finale .lockmsg{display:flex;gap:12px;align-items:center;color:var(--ink-2);font-weight:500}
-.form{display:grid;gap:12px;margin-top:14px}
-.fld{display:grid;gap:4px;font-size:13px;font-weight:600;color:var(--ink-2)}
-.fld input{height:44px;border:1px solid var(--rule);border-radius:9px;padding:0 12px;font:inherit;font-size:16px;color:var(--ink);background:rgba(0,0,0,.25)}
-.msg{white-space:pre-wrap;background:rgba(0,0,0,.25);border:1px solid var(--rule);border-radius:9px;padding:14px;font-size:15px;line-height:1.5}
-.conf{display:none;margin-top:16px}
-.finale.open .conf{display:block}
-.finale.open .form,.finale.open .lockmsg{display:none}
-.receipt{border:2px solid var(--ok);color:var(--ok);display:inline-block;padding:4px 10px;border-radius:6px;font-weight:700;font-family:"Barlow Semi Condensed",sans-serif;transform:rotate(-3deg);margin-bottom:10px;box-shadow:0 0 14px var(--ok)}
+Generate my message
+Figures are from my full CV. Client and project names are withheld under NDA; happy to walk through them on a call.
+Reset progress
 
-/* drawer */
-.scrim{position:fixed;inset:0;background:rgba(5,7,25,.65);backdrop-filter:blur(4px);opacity:0;pointer-events:none;transition:opacity .25s;z-index:20}
-.scrim.on{opacity:1;pointer-events:auto}
-.drawer{position:fixed;left:0;right:0;bottom:0;z-index:21;background:var(--card-solid);border-radius:18px 18px 0 0;max-height:88vh;overflow:auto;transform:translateY(105%);transition:transform .3s;padding:0 0 calc(20px + env(safe-area-inset-bottom,0px));box-shadow:0 -8px 60px rgba(0,0,0,.5),0 0 40px var(--c,var(--plum))}
-.drawer.on{transform:none}
-@media (min-width:760px){.drawer{left:50%;right:auto;width:680px;transform:translate(-50%,105%)}.drawer.on{transform:translate(-50%,0)}}
-.d-head{position:sticky;top:0;background:var(--card-solid);padding:18px 22px 12px;border-bottom:4px solid var(--c,var(--plum));display:flex;gap:12px;align-items:flex-start}
-.d-head h3{font-family:"Barlow Semi Condensed",sans-serif;font-size:24px;line-height:1.1;font-weight:700}
-.d-head .sub{color:var(--ink-2);font-size:15px;margin-top:2px}
-.d-head .x{margin-left:auto;width:36px;height:36px;border-radius:50%;border:1px solid var(--rule);font-size:18px;flex:none}
-.d-body{padding:16px 22px;display:grid;gap:16px}
-.manifest{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px}
-.manifest div{background:rgba(0,0,0,.25);border:1px solid var(--rule);border-radius:9px;padding:10px 12px}
-.manifest .k{font-size:12px;color:var(--ink-2);font-weight:600}
-.manifest .v{font-weight:700;font-size:18px;color:#fff}
-.d-body h4{font-size:14px;color:var(--ink-2);font-weight:600;margin-bottom:6px}
-.d-body ul{padding-left:18px}
-.d-body li{margin:6px 0}
-.chips{display:flex;flex-wrap:wrap;gap:6px}
-.chip{font-size:13px;font-weight:600;background:rgba(255,255,255,.06);border:1px solid var(--rule);border-radius:14px;padding:3px 10px}
-.stamped{display:flex;align-items:center;gap:10px;background:var(--plum-soft);border:1px solid var(--c,var(--plum));border-radius:9px;padding:10px 12px;font-weight:600;color:#fff}
-.d-nav{display:flex;gap:10px;justify-content:space-between;padding:0 22px}
+Let’s make a great product together.
 
-.toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom,0px));transform:translate(-50%,20px);background:var(--teal);color:#0B0E2A;padding:10px 16px;border-radius:20px;font-weight:700;font-size:14px;opacity:0;transition:.25s;z-index:30;pointer-events:none;box-shadow:var(--glow-t)}
-.toast.on{opacity:1;transform:translate(-50%,0)}
-footer{padding:30px 0 50px;color:var(--ink-2);font-size:14px;text-align:center}
-</style>
-</head>
-<body>
-<div class="bg" id="bg"></div>
 
-<header class="top">
-  <div class="wrap">
-    <div class="brand">Ivan Tiutiunnyk · CV<small>Interactive route through my career</small></div>
-    <div class="spacer"></div>
-    <div class="meter" aria-live="polite"><span id="count">0/10</span><span class="bar"><i id="fill"></i></span></div>
-    <button class="tbtn" id="sound" aria-pressed="false" title="Toggle music">Music off</button>
-  </div>
-</header>
-
-<main class="wrap">
-  <div class="hero">
-    <div class="pass">
-      <div class="pass-in">
-        <div>
-          <h1>Ivan Tiutiunnyk</h1>
-          <div class="role">Interactive CV · Product & Project Manager · 10 years delivering software, from telecom infrastructure to AI products</div>
-        </div>
-        <div class="grid">
-          <div><div class="k">Base</div><div class="v">Valencia, Spain · remote-first</div></div>
-          <div><div class="k">Right now</div><div class="v live"><b></b>Working from APAC (UTC+8)</div></div>
-          <div><div class="k">Engagement</div><div class="v">B2B contract or employment, EU-wide</div></div>
-        </div>
-        <div class="cta">
-          <a class="btn" href="#route">Start the route</a>
-          <button class="btn ghost" id="musicbtn">Play music</button>
-          <span class="hint">About two minutes. Tap each of the 10 stops to open it; visit them all to unlock the delivery confirmation.</span>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <section id="info">
-    <h2>Dispatch desk</h2>
-    <p class="lead">Have a role in mind? Everything you need to reach me.</p>
-    <div class="card contact">
-      <div class="crow"><div><div class="k">Email</div><div class="v">tyutyunnik.i.a@gmail.com</div></div><button class="mini" data-copy="tyutyunnik.i.a@gmail.com">Copy</button></div>
-      <div class="crow"><div><div class="k">LinkedIn</div><div class="v">linkedin.com/in/ivan-tiutiunnyk</div></div><a class="mini" href="https://www.linkedin.com/in/ivan-tiutiunnyk/" target="_blank" rel="noopener">Open</a></div>
-      <div class="crow"><div><div class="k">Base</div><div class="v">Valencia, Spain. Currently in APAC, UTC+8</div></div></div>
-    </div>
-  </section>
-
-  <section id="route">
-    <h2>Route map</h2>
-    <p class="lead">Three lines, ten stops. Every circle is a button: tap it to open the manifest for that stop. Each visit adds a stamp to your waybill.</p>
-    <div class="map">
-      <svg id="svg" viewBox="0 0 700 760" role="list" aria-label="Career route map"></svg>
-      <div class="legend">
-        <span><i style="background:var(--amber)"></i>JTI line · 2016–2021</span>
-        <span><i style="background:var(--teal)"></i>GlobalLogic line · 2021–2022</span>
-        <span><i style="background:var(--plum)"></i>Django Stars line · 2022–now</span>
-      </div>
-    </div>
-  </section>
-
-  <section id="schedule">
-    <h2>Schedule</h2>
-    <p class="lead">Every stop, in the years it ran. Tap a segment to open it.</p>
-    <div class="sched"><div class="sched-in" id="sched"></div></div>
-  </section>
-
-  <section id="waybill">
-    <h2>Your waybill</h2>
-    <p class="lead">Stamps you have collected so far.</p>
-    <div class="waybill">
-      <div class="stamps" id="stamps"></div>
-    </div>
-  </section>
-
-  <section id="depot">
-    <h2>Depot</h2>
-    <p class="lead">Education, certifications and the tools in the cab.</p>
-    <div class="two">
-      <div class="card">
-        <h3>Certifications</h3>
-        <ul>
-          <li>Professional Scrum Master II and I (PSM II, PSM I)</li>
-          <li>Registered Product Owner@Scale</li>
-          <li>Registered Scrum@Scale Fundamentals</li>
-          <li>ICAgile Certified Professional, Agile Team Facilitation</li>
-          <li>Product Manager Bootcamp, Asta Academy</li>
-          <li>IT Project Management, Big Management Program (MindsetPM)</li>
-          <li>Project Management, Kepner-Tregoe</li>
-        </ul>
-      </div>
-      <div class="card">
-        <h3>Education</h3>
-        <ul>
-          <li>Master’s in Banking (Financial Monitoring of Banks), University of Banking of the National Bank of Ukraine, 2014–2016</li>
-          <li>Bachelor’s in Finance and Credit, Kharkiv Institute of Banking, 2010–2014</li>
-        </ul>
-        <h3 style="margin-top:16px">Languages</h3>
-        <ul><li>English, professional</li><li>Ukrainian, native</li></ul>
-      </div>
-    </div>
-  </section>
-
-  <section id="finale">
-    <h2>Delivery confirmation</h2>
-    <p class="lead">Unlocks after all ten stops. Leave your name and I will know who made the trip.</p>
-    <div class="finale locked" id="fin">
-      <div class="lockmsg"><span id="lockicon">🔒</span><span id="locktext">Visit the remaining stops to unlock. 10 to go.</span></div>
-      <div class="form" id="form" hidden>
-        <label class="fld">Your name<input id="fname" autocomplete="name"></label>
-        <label class="fld">Company<input id="fcomp" autocomplete="organization"></label>
-        <label class="fld">Role you have in mind (optional)<input id="frole"></label>
-        <div><button class="btn" id="gen">Generate my message</button></div>
-      </div>
-      <div class="conf">
-        <div class="receipt">Delivered</div>
-        <p>You completed the whole route. Here is a message ready to send; edit anything you like.</p>
-        <div class="msg" id="msg" style="margin-top:10px"></div>
-        <div class="cta" style="margin-top:14px">
-          <a class="btn" id="mail" href="#">Send by email</a>
-          <button class="btn ghost" id="copymsg">Copy message</button>
-          <a class="btn ghost" href="https://www.linkedin.com/in/ivan-tiutiunnyk/" target="_blank" rel="noopener">Message on LinkedIn</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <footer>This interactive CV maps a real career. Figures are from the full CV; project names are withheld under NDA.<br><button class="tbtn" id="reset" style="margin-top:12px">Reset my waybill</button></footer>
-</main>
-
-<div class="scrim" id="scrim"></div>
-<aside class="drawer" id="drawer" role="dialog" aria-modal="true" aria-labelledby="d-title">
-  <div class="d-head"><div><h3 id="d-title"></h3><div class="sub" id="d-sub"></div></div><button class="x" id="close" aria-label="Close">✕</button></div>
-  <div class="d-body" id="d-body"></div>
-  <div class="d-nav"><button class="tbtn" id="prev">Previous stop</button><button class="tbtn" id="next">Next stop</button></div>
-</aside>
-<div class="toast" id="toast"></div>
-
-<script>
-const STOPS=[
- {id:"jti-data",line:"amber",co:"Japan Tobacco International",title:"Data Management, Worldwide Duty Free",years:"2016–2019",start:2016.5,end:2019.45,where:"Kyiv, Ukraine",
-  manifest:[["Scope","Global duty-free channel"],["Focus","Data, pricing, stock"]],
-  bullets:["Owned the data backbone for the Worldwide Duty Free business: sales reporting, pricing analysis and out-of-stock tracking across global markets.","Cut inventory out-of-stock incidents by 25% through better level tracking and reporting.","First role bridging business teams and the IT systems behind them."],
-  tools:["Excel modelling","Reporting","Pricing analysis","Stock tracking"]},
- {id:"jti-proc",line:"amber",co:"Japan Tobacco International",title:"Procurement Project Manager, Worldwide Duty Free",years:"2019–2021",start:2019.45,end:2021.3,where:"Kyiv, Ukraine",
-  manifest:[["Saving","−20% IT procurement cost"],["Teams","International, cross-functional"]],
-  bullets:["Directed the digital transformation of JTI’s global duty-free operations, delivering IT projects for Marketing, Sales and Digital Business units.","Reduced annual IT procurement costs by 20% with a competitive bidding framework and tighter vendor management.","Optimised budget allocation and ROI across several IT workstreams within strict corporate constraints.","Translated business requirements into technical specifications and smooth deployments across regions."],
-  tools:["Vendor management","Budgeting","RFP / bidding","Change management"]},
- {id:"gl",line:"teal",co:"GlobalLogic",title:"Project Manager, Ericsson telecom delivery",years:"2021–2022",start:2021.35,end:2022.25,where:"Kyiv, Ukraine",
-  manifest:[["Team","15–20 engineers"],["Reliability","99.9% uptime"],["Milestones","95% accuracy"]],
-  bullets:["Directed enterprise software delivery for Ericsson on infrastructure projects for Tier-1 US carriers (Verizon, AT&T, T-Mobile).","Applied high-availability standards and scalable architecture patterns for platforms serving millions of concurrent users.","Ran complex project lifecycles to 95% milestone accuracy under telecom-grade scope, budget and quality rules.","Managed stakeholder communication across US and EMEA time zones."],
-  tools:["Telecom delivery","Risk management","Stakeholder management","Jira","Confluence"]},
- {id:"ds-hub",line:"plum",co:"Django Stars",title:"Project Manager, hub of the consultancy portfolio",years:"2022–now",start:2022.2,end:2026.9,where:"Remote",
-  manifest:[["Portfolio","6 domains, international clients"],["Teams","8–12 per project"],["Time-to-market","−25%"]],
-  bullets:["Orchestrates delivery across a portfolio of international clients in Logistics, EdTech, Healthcare, FinTech, Travel and Real Estate.","Reduced time-to-market by 25% for mission-critical products by streamlining Agile workflows and cross-functional coordination.","Runs full-cycle execution for high-load platforms with a focus on scalability and performance.","Since May 2025 also Product Manager: owns roadmaps and backlog prioritisation across concurrent products."],
-  tools:["Scrum","Kanban","Release management","Jira","Confluence","Miro","Figma"]},
- {id:"logistics",line:"plum",co:"Django Stars · Logistics",title:"AI-driven route planning platform",years:"2022–2024",start:2022.4,end:2024.3,where:"Remote",
-  manifest:[["Outcome","+30% route efficiency"],["Tech","ML models in production"]],
-  bullets:["Led development of an AI-driven logistics platform, integrating machine-learning models into the planning workflow.","Route planning optimised by 30% after rollout.","Coordinated data scientists, backend and frontend teams around a single delivery plan."],
-  tools:["ML integration","Roadmapping","Backlog prioritisation"]},
- {id:"edtech",line:"plum",co:"Django Stars · EdTech",title:"Personalised learning platform",years:"2023–2025",start:2023.1,end:2025.2,where:"Remote",
-  manifest:[["Outcome","+80% user engagement"],["Lever","Personalised learning paths"]],
-  bullets:["Delivered AI-powered personalised learning paths for an education product.","User engagement increased by 80% after launch.","Balanced pedagogy requirements with model behaviour and release cadence."],
-  tools:["Product discovery","UX","A/B thinking","Release management"]},
- {id:"health-fin",line:"plum",co:"Django Stars · Healthcare and FinTech",title:"Regulated, high-stakes deliveries",years:"2022–2026",start:2022.6,end:2026.3,where:"Remote",
-  manifest:[["Compliance","100% with industry standards"],["Sectors","Healthcare, FinTech"]],
-  bullets:["Navigated domain-specific requirements in Healthcare and FinTech with 100% compliance to industry standards and regulations.","Built security and audit considerations into the delivery plan rather than bolting them on at the end.","Managed client expectations where regulation sets the pace."],
-  tools:["Compliance planning","Risk management","Technical specifications"]},
- {id:"travel-re",line:"plum",co:"Django Stars · Travel and Real Estate",title:"High-load consumer platforms",years:"2023–2026",start:2023.4,end:2026.6,where:"Remote",
-  manifest:[["Focus","Scalability and performance"],["Teams","8–12 members"]],
-  bullets:["Managed full-cycle execution for high-concurrency platforms supporting rapid user growth.","Kept scope, budget and quality aligned across multiple concurrent projects.","Ran Scrum ceremonies and release management for distributed teams."],
-  tools:["Scaling","Performance planning","Account management"]},
- {id:"waste",line:"plum",co:"Django Stars · US Waste Management",title:"Product Manager, market-leading B2B platform",years:"2025–now",start:2025.35,end:2026.9,where:"Remote",
-  manifest:[["Clients","+15% month over month"],["Active users","+20%"]],
-  bullets:["Drives product strategy for a major player in the US waste-management market.","Consistent 15% month-over-month growth in active clients and a 20% increase in active users.","Prioritises the backlog and roadmap so engineering time goes to the highest-impact features."],
-  tools:["Product strategy","Roadmapping","KPI implementation","Data analysis"]},
- {id:"hris",line:"plum",co:"Django Stars · Internal product",title:"HR Information System with employee self-service",years:"2025–2026",start:2025.4,end:2026.2,where:"Remote",
-  manifest:[["Adoption","100% company-wide"],["Admin time","−70%"]],
-  bullets:["Spearheaded the end-to-end launch of a custom HRIS, centralising all operational people data.","Reached 100% adoption across the company.","Automated internal reporting, cutting time spent on administrative tasks by 70%."],
-  tools:["0→1 delivery","Internal stakeholders","Automation","Change management"]}
-];
-const COLOR={amber:"var(--amber)",teal:"var(--teal)",plum:"var(--plum)"};
-const HEX={amber:"#FFB31F",teal:"#2CF2E2",plum:"#FF4FA8"};
-let visited=new Set();
-try{const s=localStorage.getItem("route-visited");if(s)visited=new Set(JSON.parse(s))}catch(e){}
-function save(){try{localStorage.setItem("route-visited",JSON.stringify([...visited]))}catch(e){}}
-
-/* ---- sound ---- */
-let soundOn=false,ac=null;
-function beep(f,t,d){if(!soundOn)return;try{ac=ac||new (window.AudioContext||window.webkitAudioContext)();const o=ac.createOscillator(),g=ac.createGain();o.type=t;o.frequency.value=f;g.gain.value=.0001;o.connect(g);g.connect(ac.destination);const n=ac.currentTime;g.gain.exponentialRampToValueAtTime(.12,n+.01);g.gain.exponentialRampToValueAtTime(.0001,n+d);o.start(n);o.stop(n+d)}catch(e){}}
-const stampSound=()=>{beep(520,"square",.09);setTimeout(()=>beep(780,"square",.14),70)};
-
-/* background music: chill lo-fi techno, generated in the browser, no files */
-let music={on:false,timer:null,next:0,step:0,gain:null,noise:null};
-const CHORDS=[[45,52,57,60],[41,48,53,57],[48,55,59,62],[43,50,55,59]]; // Am7, Fmaj7, Cmaj7, G6
-const hz=m=>440*Math.pow(2,(m-69)/12);
-function note(m,t,d,type,vol,cut){const o=ac.createOscillator(),g=ac.createGain(),f=ac.createBiquadFilter();f.type="lowpass";f.frequency.value=cut||900;f.Q.value=.7;o.type=type;o.frequency.value=hz(m);g.gain.setValueAtTime(.0001,t);g.gain.exponentialRampToValueAtTime(vol,t+.03);g.gain.exponentialRampToValueAtTime(.0001,t+d);o.connect(f);f.connect(g);g.connect(music.gain);o.start(t);o.stop(t+d+.05)}
-function kick(t){const o=ac.createOscillator(),g=ac.createGain();o.type="sine";o.frequency.setValueAtTime(130,t);o.frequency.exponentialRampToValueAtTime(42,t+.12);g.gain.setValueAtTime(.55,t);g.gain.exponentialRampToValueAtTime(.0001,t+.32);o.connect(g);g.connect(music.gain);o.start(t);o.stop(t+.35)}
-function hat(t,open){if(!music.noise){const b=ac.createBuffer(1,ac.sampleRate,ac.sampleRate),d=b.getChannelData(0);for(let i=0;i<d.length;i++)d[i]=Math.random()*2-1;music.noise=b}const s=ac.createBufferSource(),g=ac.createGain(),f=ac.createBiquadFilter();s.buffer=music.noise;f.type="highpass";f.frequency.value=7000;g.gain.setValueAtTime(open?.07:.045,t);g.gain.exponentialRampToValueAtTime(.0001,t+(open?.18:.05));s.connect(f);f.connect(g);g.connect(music.gain);s.start(t);s.stop(t+.2)}
-function schedule(){if(!music.on)return;const BPM=104,st=60/BPM/4;while(music.next<ac.currentTime+.5){const bar=Math.floor(music.step/16)%4,s=music.step%16,ch=CHORDS[bar],t=music.next;
-  if(s%4===0)kick(t);                                             // four-on-the-floor
-  if(s%2===0)hat(t,false);if(s%8===6)hat(t,true);                 // eighth hats, open on the off
-  if(s===4||s===12)note(ch[0]-12,t,st*3,"triangle",.07,500);      // sub bass on the backbeat
-  if(s===3||s===11||s===14)note(ch[0]-12,t,st*1.5,"sawtooth",.05,350); // bass syncopation
-  if(s===0)ch.forEach(m=>note(m+12,t,st*15,"sawtooth",.018,700)); // washed pad
-  if(s===6||s===10||s===15)note(ch[(s>>2)%4]+24,t,st*2.5,"sine",.035,2500); // sparse keys
-  music.next+=st;music.step++}music.timer=setTimeout(schedule,120)}
-function toggleMusic(){ac=ac||new (window.AudioContext||window.webkitAudioContext)();if(ac.state==="suspended")ac.resume();music.on=!music.on;soundOn=music.on;
-  if(music.on){if(!music.gain){music.gain=ac.createGain();const comp=ac.createDynamicsCompressor();comp.threshold.value=-18;comp.ratio.value=4;music.gain.connect(comp);comp.connect(ac.destination)}music.gain.gain.setTargetAtTime(.8,ac.currentTime,.3);music.next=ac.currentTime+.05;music.step=0;schedule()}
-  else{clearTimeout(music.timer);if(music.gain)music.gain.gain.setTargetAtTime(0,ac.currentTime,.2)}
-  document.querySelectorAll("#sound,#musicbtn").forEach(b=>{b.setAttribute("aria-pressed",music.on);b.textContent=b.id==="sound"?(music.on?"Music on":"Music off"):(music.on?"Pause music":"Play music")})}
-document.getElementById("sound").onclick=toggleMusic;document.getElementById("musicbtn").onclick=toggleMusic;
-
-/* ---- map ---- */
-const svg=document.getElementById("svg");
-const X=130,Xb=330;
-const posY=[70,160,260,370,440,510,580,650,720,790];
-// layout: main line vertical at X; Django Stars branch at Xb from stop 3 downward
-svg.setAttribute("viewBox","0 0 700 940");
-function path(d,c,w){const p=document.createElementNS("http://www.w3.org/2000/svg","path");p.setAttribute("d",d);p.setAttribute("stroke",c);p.setAttribute("stroke-width",w||10);p.setAttribute("fill","none");p.setAttribute("stroke-linecap","round");p.setAttribute("stroke-linejoin","round");return p}
-svg.innerHTML=`<defs><filter id="glow" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>`;
-const D=[[`M${X} ${posY[0]} V${posY[2]-40}`,HEX.amber],[`M${X} ${posY[1]+40} V${posY[3]-40}`,HEX.teal],[`M${X} ${posY[2]+40} V${posY[3]} Q${X} ${posY[3]+50} ${X+50} ${posY[3]+50} H${Xb-50} Q${Xb} ${posY[3]+50} ${Xb} ${posY[3]+100} V${posY[9]+110}`,HEX.plum]];
-D.forEach(([d,c])=>{const g=path(d,c,18);g.setAttribute("class","line glow");svg.append(g)});
-D.forEach(([d,c])=>{svg.append(path(d,c,10))});
-D.forEach(([d])=>{const f=path(d,"#fff",3);f.setAttribute("class","line flow");svg.append(f)});
-const full=`M${X} ${posY[0]} V${posY[3]} Q${X} ${posY[3]+50} ${X+50} ${posY[3]+50} H${Xb-50} Q${Xb} ${posY[3]+50} ${Xb} ${posY[3]+100} V${posY[9]+110}`;
-const truck=document.createElementNS("http://www.w3.org/2000/svg","g");truck.setAttribute("pointer-events","none");
-truck.innerHTML=`<circle r="9" fill="#fff" filter="url(#glow)"></circle><circle r="4" fill="${HEX.plum}"></circle><animateMotion dur="18s" repeatCount="indefinite" path="${full}"/>`;
-svg.append(truck);
-// branch ticks
-STOPS.forEach((s,i)=>{
-  const x=i<4?X:Xb,y=posY[i]+(i>=4?50:0);
-  const g=document.createElementNS("http://www.w3.org/2000/svg","g");
-  g.setAttribute("class","stop");g.setAttribute("role","listitem");g.setAttribute("tabindex","0");g.dataset.id=s.id;g.style.color=HEX[s.line];
-  const r=i===3?16:11;
-  g.innerHTML=`<title>Click to open: ${s.title}</title><circle class="ring" cx="${x}" cy="${y}" r="${r}" stroke="${HEX[s.line]}"></circle>
-   <text class="tick" x="${x}" y="${y+4}">✓</text>
-   <text class="yr" x="${x-26}" y="${y+5}">${s.years}</text>
-   <text x="${x+28}" y="${y-2}">${s.co}</text>
-   <text class="sub" x="${x+28}" y="${y+17}">${s.title}</text>`;
-  g.addEventListener("click",()=>open(i));g.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();open(i)}});
-  svg.append(g);
-});
-// "Click me" callout that follows the next unvisited stop
-const hint=document.createElementNS("http://www.w3.org/2000/svg","g");hint.id="taphint";hint.setAttribute("pointer-events","none");
-hint.innerHTML=`<g id="hintbob"><rect class="tapme-bg" width="96" height="28" rx="14"></rect><text class="tapme" x="48" y="19" text-anchor="middle">Click me ↓</text><animateTransform attributeName="transform" type="translate" values="0 0;0 6;0 0" dur="1.4s" repeatCount="indefinite"/></g>`;
-svg.append(hint);
-function moveHint(){const i=STOPS.findIndex(s=>!visited.has(s.id));if(i<0){hint.style.display="none";return}hint.style.display="";const x=i<4?X:Xb,y=posY[i]+(i>=4?50:0);hint.setAttribute("transform",`translate(${x-48} ${y-56})`)}
-// current position marker
-const cur=document.createElementNS("http://www.w3.org/2000/svg","g");
-cur.innerHTML=`<circle cx="${Xb}" cy="${posY[9]+110}" r="7" fill="${HEX.plum}"><animate attributeName="r" values="7;11;7" dur="2s" repeatCount="indefinite"/></circle><text x="${Xb+28}" y="${posY[9]+107}" style="font:600 14px Barlow;fill:var(--ink)">You are here · Nov 2026</text><text x="${Xb+28}" y="${posY[9]+126}" style="font:400 13px Barlow;fill:var(--ink-2)">Base Valencia · working from APAC</text>`;
-svg.append(cur);
-
-/* ---- schedule ---- */
-const sched=document.getElementById("sched");
-const Y0=2016,Y1=2027;
-let ax='<div class="axis">';for(let y=Y0;y<Y1;y++)ax+=`<span>${y}</span>`;ax+="</div>";
-sched.innerHTML=ax+STOPS.map((s,i)=>{const l=(s.start-Y0)/(Y1-Y0)*100,w=(s.end-s.start)/(Y1-Y0)*100;return `<div class="rowt"><div class="lab">${s.co.replace("Django Stars · ","DS · ")}</div><div class="track"><button class="seg" data-i="${i}" style="left:${l}%;width:${w}%;background:${HEX[s.line]};box-shadow:0 0 12px ${HEX[s.line]}">${s.title}</button></div></div>`}).join("");
-sched.querySelectorAll(".seg").forEach(b=>b.onclick=()=>open(+b.dataset.i));
-
-/* ---- waybill ---- */
-const stampsEl=document.getElementById("stamps");
-stampsEl.innerHTML=STOPS.map(s=>`<button class="stamp" data-id="${s.id}" style="--c:${HEX[s.line]}"><span>${s.co.replace("Django Stars · ","")}</span><small>${s.years}</small></button>`).join("");
-stampsEl.querySelectorAll(".stamp").forEach(b=>b.onclick=()=>open(STOPS.findIndex(s=>s.id===b.dataset.id)));
-
-/* ---- render state ---- */
-function render(){
-  const n=visited.size;
-  document.getElementById("count").textContent=`${n}/10`;
-  document.getElementById("fill").style.width=(n*10)+"%";
-  document.querySelectorAll(".stop").forEach(g=>g.classList.toggle("done",visited.has(g.dataset.id)));
-  const th=document.getElementById("taphint");if(th)moveHint();
-  document.querySelectorAll(".stamp").forEach(b=>b.classList.toggle("done",visited.has(b.dataset.id)));
-  document.querySelectorAll(".seg").forEach(b=>b.classList.toggle("done",visited.has(STOPS[+b.dataset.i].id)));
-  const fin=document.getElementById("fin"),form=document.getElementById("form");
-  if(n===10){fin.classList.remove("locked");document.getElementById("lockicon").textContent="🔓";document.getElementById("locktext").textContent="Route complete. Fill in the form below.";form.hidden=false}
-  else{fin.classList.add("locked");form.hidden=true;document.getElementById("locktext").textContent=`Visit the remaining stops to unlock. ${10-n} to go.`}
-}
-
-/* ---- drawer ---- */
-const drawer=document.getElementById("drawer"),scrim=document.getElementById("scrim");let curIdx=0;
-function open(i){
-  curIdx=i;const s=STOPS[i];const first=!visited.has(s.id);
-  drawer.style.setProperty("--c",HEX[s.line]);
-  document.getElementById("d-title").textContent=s.title;
-  document.getElementById("d-sub").textContent=`${s.co} · ${s.years} · ${s.where}`;
-  document.getElementById("d-body").innerHTML=`
-    <div class="manifest">${s.manifest.map(m=>`<div><div class="k">${m[0]}</div><div class="v">${m[1]}</div></div>`).join("")}</div>
-    <div><h4>What happened here</h4><ul>${s.bullets.map(b=>`<li>${b}</li>`).join("")}</ul></div>
-    <div><h4>In the cab</h4><div class="chips">${s.tools.map(t=>`<span class="chip">${t}</span>`).join("")}</div></div>
-    <div class="stamped">${first?"New stamp added to your waybill":"Stamp already on your waybill"}</div>
-    ${i<STOPS.length-1?`<div class="hint">Next stop: <b>${STOPS[i+1].title}</b>. Use the buttons below or close and pick another stop on the map.</div>`:`<div class="hint">This is the last stop on the line.</div>`}`;
-  document.getElementById("prev").disabled=i===0;document.getElementById("next").disabled=i===STOPS.length-1;
-  drawer.classList.add("on");scrim.classList.add("on");
-  if(first){visited.add(s.id);save();stampSound();if(visited.size===10)setTimeout(()=>{toast("All 10 stops visited. Delivery confirmation unlocked.");beep(880,"sine",.3)},300)}
-  render();document.getElementById("close").focus();
-}
-function closeD(){drawer.classList.remove("on");scrim.classList.remove("on")}
-document.getElementById("close").onclick=closeD;scrim.onclick=closeD;
-document.getElementById("prev").onclick=()=>open(curIdx-1);document.getElementById("next").onclick=()=>open(curIdx+1);
-document.addEventListener("keydown",e=>{if(e.key==="Escape")closeD()});
-
-/* ---- toast & copy ---- */
-let tt;function toast(t){const el=document.getElementById("toast");el.textContent=t;el.classList.add("on");clearTimeout(tt);tt=setTimeout(()=>el.classList.remove("on"),2600)}
-async function copy(t){try{await navigator.clipboard.writeText(t);toast("Copied")}catch(e){toast("Copy failed. Select the text manually.")}}
-document.querySelectorAll("[data-copy]").forEach(b=>b.onclick=()=>copy(b.dataset.copy));
-
-/* ---- finale ---- */
-document.getElementById("gen").onclick=()=>{
-  const name=document.getElementById("fname").value.trim()||"a recruiter",comp=document.getElementById("fcomp").value.trim(),role=document.getElementById("frole").value.trim();
-  const m=`Hi Ivan,\n\nThis is ${name}${comp?" from "+comp:""}. I just completed your Delivery Route CV${role?` and I have a ${role} role in mind`:""}. The stops that stood out to me were the AI logistics platform and the US waste-management product work.\n\nCould we find 30 minutes this week? I can work around your APAC hours.\n\nBest regards,\n${name}`;
-  document.getElementById("msg").textContent=m;
-  document.getElementById("mail").href="mailto:tyutyunnik.i.a@gmail.com?subject="+encodeURIComponent("Delivery Route CV: let’s talk")+"&body="+encodeURIComponent(m);
-  document.getElementById("copymsg").onclick=()=>copy(m);
-  document.getElementById("fin").classList.add("open");beep(990,"sine",.2);
-};
-document.getElementById("reset").onclick=()=>{visited=new Set();save();document.getElementById("fin").classList.remove("open");render();toast("Waybill cleared")};
-render();
-(()=>{const bg=document.getElementById("bg");for(let i=0;i<40;i++){const d=document.createElement("i");d.style.left=Math.random()*100+"%";d.style.top=Math.random()*100+"%";d.style.animationDelay=(Math.random()*4)+"s";d.style.animationDuration=(3+Math.random()*4)+"s";bg.append(d)}})();
-</script>
-</body>
-</html>
