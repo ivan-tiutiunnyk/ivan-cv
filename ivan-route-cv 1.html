@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Ivan Tiutiunnyk — Interactive CV · Product & Project Manager</title>
+<meta name="description" content="Interactive CV of Ivan Tiutiunnyk, Product and Project Manager: 10 years shipping software for startups, scale-ups and enterprise clients, from AI products to telecom infrastructure.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+  --bg:#0D1326;--bg-2:#121A33;--panel:#161F3B;--panel-2:#1C2747;--ink:#FFFFFF;--ink-2:#C4CCE8;--rule:rgba(196,204,232,.22);
+  --violet:#9B8CFF;--mint:#3DDC97;--amber:#FFB84D;--sky:#5FB2FF;--rose:#FF6B9A;
+  --focus:#9B8CFF;color-scheme:dark;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){color-scheme:dark}}
+:root[data-theme="dark"]{color-scheme:dark}
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 70px);scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto} *{transition:none!important;animation:none!important}}
+*{box-sizing:inherit;margin:0}
+body{background:var(--bg);color:var(--ink);font-family:"IBM Plex Sans",system-ui,sans-serif;font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--bg);z-index:10}
+.bg{position:fixed;inset:0;z-index:-1;background:
+ radial-gradient(800px 420px at 85% -10%,rgba(155,140,255,.25),transparent 60%),
+ radial-gradient(700px 400px at 0% 100%,rgba(61,220,151,.14),transparent 60%),var(--bg)}
+.bg::after{content:"";position:absolute;inset:0;background-image:radial-gradient(rgba(196,204,232,.16) 1px,transparent 1px);background-size:26px 26px;mask-image:linear-gradient(black,transparent 80%)}
+.bg i{position:absolute;border-radius:50%;background:#fff;animation:twinkle var(--d,4s) ease-in-out infinite;animation-delay:var(--dl,0s);opacity:.5}
+.bg i.big{box-shadow:0 0 6px #fff,0 0 12px rgba(155,140,255,.7)}
+@keyframes twinkle{0%,100%{opacity:.15;transform:scale(.7)}50%{opacity:.95;transform:scale(1.25)}}
+.bg .shoot{position:absolute;width:140px;height:2px;background:linear-gradient(90deg,#fff,transparent);border-radius:2px;opacity:0;transform:rotate(-30deg);animation:shoot 9s linear infinite;animation-delay:var(--dl,0s)}
+@keyframes shoot{0%,88%{opacity:0;transform:translate(0,0) rotate(-30deg)}90%{opacity:1}100%{opacity:0;transform:translate(-320px,185px) rotate(-30deg)}}
+a{color:inherit}button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
+.mono{font-family:"IBM Plex Mono",monospace}
+.wrap{max-width:820px;margin:0 auto;padding:0 20px}
+
+/* top bar */
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:9;background:rgba(13,19,38,.8);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--rule)}
+.top .wrap{display:flex;align-items:center;gap:12px;height:62px}
+.brand{font-weight:700;font-size:17px}.brand small{display:block;font-weight:500;font-size:12px;color:var(--ink-2)}
+.spacer{flex:1}
+.pipe{display:flex;align-items:center;gap:8px;font-weight:600;font-size:14px}
+.pipe .bar{width:96px;height:8px;border-radius:4px;background:rgba(255,255,255,.1);overflow:hidden}
+.pipe .bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--violet),var(--mint));transition:width .35s}
+.tbtn{height:36px;padding:0 12px;border-radius:8px;border:1px solid var(--rule);font-size:14px;font-weight:600;background:rgba(255,255,255,.05)}
+.tbtn[aria-pressed="true"]{border-color:var(--mint);color:var(--mint)}
+
+/* hero + pitch */
+.hero{padding:36px 0 10px;display:grid;gap:18px}
+.hero h1{font-size:clamp(34px,7vw,52px);line-height:1.05;font-weight:700;letter-spacing:-.02em}
+.hero .title{font-size:20px;color:var(--ink-2);font-weight:500;margin-top:6px}
+.status{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.tag{display:inline-flex;align-items:center;gap:7px;border:1px solid var(--rule);border-radius:8px;padding:5px 10px;font-size:14px;font-weight:600;background:rgba(255,255,255,.04)}
+.tag b{width:8px;height:8px;border-radius:50%;background:var(--mint);box-shadow:0 0 8px var(--mint);display:inline-block}
+.pitch{background:linear-gradient(160deg,var(--panel-2),var(--panel));border:1px solid var(--rule);border-radius:16px;padding:22px;position:relative;overflow:hidden}
+.pitch::before{content:"";position:absolute;left:0;top:0;bottom:0;width:5px;background:linear-gradient(var(--violet),var(--mint))}
+.pitch h2{font-size:22px;font-weight:700;margin-bottom:6px}
+.pitch p{color:var(--ink);max-width:66ch}
+.proof{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px;margin-top:16px}
+.proof div{background:rgba(0,0,0,.25);border:1px solid var(--rule);border-radius:10px;padding:12px}
+.proof .n{font-size:26px;font-weight:700;line-height:1;color:var(--mint)}
+.proof .l{font-size:13px;color:var(--ink-2);margin-top:6px;line-height:1.35}
+.fit{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px;align-items:center;font-size:14px;color:var(--ink-2)}
+.fit span{border-radius:999px;padding:4px 11px;background:rgba(155,140,255,.18);color:#fff;font-weight:600;font-size:13px}
+.certs{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px;align-items:center;font-size:14px;color:var(--ink-2)}
+.certs span{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--mint);border-radius:7px;padding:3px 10px;color:#fff;font-weight:600;font-size:13px;background:rgba(61,220,151,.1)}
+.certs span::before{content:"✓";color:var(--mint);font-weight:700}
+.cta{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:18px}
+.btn{display:inline-flex;align-items:center;gap:8px;height:44px;padding:0 18px;border-radius:10px;background:var(--violet);color:#0D1326;font-weight:700;font-size:15px;text-decoration:none;transition:transform .15s}
+.btn:hover{transform:translateY(-1px)}.btn.ghost{background:rgba(255,255,255,.06);color:#fff;border:1px solid var(--rule)}
+.btn:disabled{opacity:.45;cursor:not-allowed}
+.hint{font-size:14px;color:var(--ink-2)}
+
+/* contact strip */
+.contact{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;margin:16px 0 8px}
+.crow{background:var(--panel);border:1px solid var(--rule);border-radius:12px;padding:12px 14px;display:flex;justify-content:space-between;align-items:center;gap:10px}
+.crow .k{font-size:12px;color:var(--ink-2);font-weight:600}.crow .v{font-weight:600;font-size:15px;word-break:break-word}
+.mini{height:30px;padding:0 11px;border-radius:8px;border:1px solid var(--mint);color:#fff;background:rgba(61,220,151,.14);font-size:13px;font-weight:600;white-space:nowrap;text-decoration:none;display:inline-flex;align-items:center;flex:none}
+
+section{padding:26px 0}
+h2.sec{font-size:26px;font-weight:700;line-height:1.1;margin-bottom:4px}
+.lead{color:var(--ink-2);margin-bottom:16px;max-width:62ch}
+
+/* release list */
+.rel{background:var(--panel);border:1px solid var(--rule);border-radius:14px;margin-bottom:12px;overflow:hidden;transition:border-color .2s}
+.rel.done{border-color:var(--mint)}
+.rel-h{width:100%;display:grid;grid-template-columns:auto 1fr auto;gap:14px;align-items:center;padding:16px 18px;text-align:left}
+.rel-h:hover{background:rgba(255,255,255,.03)}
+.ver{font-family:"IBM Plex Mono",monospace;font-weight:600;font-size:13px;padding:5px 9px;border-radius:7px;background:rgba(155,140,255,.18);color:#fff;white-space:nowrap}
+.rel.done .ver{background:rgba(61,220,151,.2)}
+.rel-t{font-weight:700;font-size:18px;line-height:1.2}
+.rel-s{color:var(--ink-2);font-size:14px;margin-top:3px}
+.rel-s b{color:var(--ink);font-weight:600}
+.st{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:600;color:var(--ink-2);white-space:nowrap}
+.st i{width:8px;height:8px;border-radius:50%;background:var(--amber);display:inline-block}
+.rel.done .st{color:var(--mint)}.rel.done .st i{background:var(--mint);box-shadow:0 0 8px var(--mint)}
+.rel-b{display:none;padding:0 18px 18px;border-top:1px solid var(--rule)}
+.rel.open .rel-b{display:block}
+.rel-b .kpis{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0 12px}
+.kpi{border:1px solid var(--rule);border-radius:9px;padding:7px 11px;font-size:14px;background:rgba(0,0,0,.22)}
+.kpi b{color:var(--mint)}
+.rel-b ul{padding-left:18px;margin:0}.rel-b li{margin:5px 0}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
+.chip{font-size:13px;font-weight:600;background:rgba(255,255,255,.06);border:1px solid var(--rule);border-radius:999px;padding:3px 10px}
+.rel-h .chev{color:var(--ink-2);font-size:13px;margin-left:6px}
+.rel.open .chev{transform:rotate(180deg);display:inline-block}
+
+.domgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}
+.dom{background:var(--panel);border:1px solid var(--rule);border-radius:12px;padding:12px 13px;display:grid;gap:4px}
+.dom .ic{font-size:22px;line-height:1}
+.dom .nm{font-weight:700;font-size:15px}
+.dom .ds{font-size:13px;color:var(--ink-2);line-height:1.35}
+.dom .ai{display:inline-block;margin-top:4px;font-size:11px;font-weight:700;color:#0D1326;background:var(--mint);border-radius:5px;padding:1px 6px;width:max-content}
+
+/* side-by-side cards */
+.two{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media (max-width:640px){.two{grid-template-columns:1fr}}
+.card{background:var(--panel);border:1px solid var(--rule);border-radius:14px;padding:18px}
+.card h3{font-size:18px;font-weight:700;margin-bottom:8px}
+.card ul{padding-left:18px;margin:0}.card li{margin:4px 0;font-size:15px}
+.stack{display:flex;flex-wrap:wrap;gap:6px}
+
+/* deploy */
+.deploy{background:var(--panel);border:1px solid var(--rule);border-radius:14px;padding:22px;position:relative}
+.deploy.locked{opacity:.8}
+.stages{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;margin:14px 0}
+.stage{height:10px;border-radius:5px;background:rgba(255,255,255,.1)}
+.stage.ok{background:var(--mint);box-shadow:0 0 10px var(--mint)}
+.lockmsg{color:var(--ink-2);font-weight:500}
+.form{display:grid;gap:12px;margin-top:14px}
+.fld{display:grid;gap:4px;font-size:13px;font-weight:600;color:var(--ink-2)}
+.fld input{height:44px;border:1px solid var(--rule);border-radius:9px;padding:0 12px;font:inherit;font-size:16px;color:var(--ink);background:rgba(0,0,0,.25)}
+.msg{white-space:pre-wrap;background:rgba(0,0,0,.25);border:1px solid var(--rule);border-radius:9px;padding:14px;font-size:15px;margin-top:10px}
+.conf{display:none;margin-top:16px}.deploy.open .conf{display:block}.deploy.open .form,.deploy.open .lockmsg{display:none}
+.ok-badge{display:inline-flex;gap:8px;align-items:center;border:1px solid var(--mint);color:var(--mint);padding:4px 10px;border-radius:8px;font-weight:700;font-family:"IBM Plex Mono",monospace;font-size:13px;margin-bottom:10px}
+.toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom,0px));transform:translate(-50%,20px);background:var(--mint);color:#0D1326;padding:10px 16px;border-radius:10px;font-weight:700;font-size:14px;opacity:0;transition:.25s;z-index:30;pointer-events:none}
+.toast.on{opacity:1;transform:translate(-50%,0)}
+footer{padding:30px 0 240px;color:var(--ink-2);font-size:14px;text-align:center}
+
+/* moon + astronaut: slides in from the right at the end of the CV */
+.moon{position:fixed;right:0;bottom:0;z-index:7;width:300px;height:230px;transform:translateX(110%);transition:transform .9s cubic-bezier(.2,.8,.2,1);pointer-events:none}
+.moon.in{transform:translateX(0)}
+.moon svg{width:100%;height:100%;display:block;overflow:visible}
+.wave{transform-origin:145px 98px;transform-box:view-box;animation:wave 1s ease-in-out infinite}
+@keyframes wave{0%,100%{transform:rotate(-25deg)}50%{transform:rotate(20deg)}}
+.bubble{position:absolute;left:-40px;top:52px;max-width:150px;background:#fff;color:#0D1326;border-radius:14px;padding:9px 12px;font-size:14px;font-weight:600;line-height:1.3;box-shadow:0 6px 24px rgba(0,0,0,.35);pointer-events:none;opacity:0;transform:translateY(8px);transition:opacity .4s .6s,transform .4s .6s}
+.bubble::after{content:"";position:absolute;right:-9px;top:14px;border:9px solid transparent;border-left-color:#fff;border-right:0}
+.moon.in .bubble{opacity:1;transform:none}
+.bubble small{display:block;font-weight:500;color:#4A5583;margin-top:2px;font-size:12px}
+@media (max-width:640px){.moon{width:210px;height:170px}.bubble{font-size:12px;max-width:120px;padding:8px 10px;left:-50px;top:34px}}
+
+/* launch pad rocket */
+.pad{position:fixed;right:max(4px,env(safe-area-inset-right,0px));bottom:calc(10px + env(safe-area-inset-bottom,0px));z-index:8;pointer-events:none;width:56px;height:140px}
+@media (max-width:640px){.pad{width:40px;height:110px;right:2px}.rocket{width:24px;height:60px}}
+.pad .ground{position:absolute;left:10px;right:10px;bottom:0;height:6px;border-radius:3px;background:rgba(196,204,232,.35)}
+.pad .ground::before,.pad .ground::after{content:"";position:absolute;bottom:6px;width:6px;height:22px;background:rgba(196,204,232,.35);border-radius:2px}
+.pad .ground::before{left:14px}.pad .ground::after{right:14px}
+.rocket{position:absolute;left:50%;bottom:8px;width:34px;height:84px;transform:translateX(-50%);will-change:transform}
+.rocket svg{width:100%;height:100%;display:block;overflow:visible}
+.flame{transform-origin:17px 0;transform-box:view-box;animation:flicker .09s infinite alternate;opacity:0;filter:drop-shadow(0 0 6px #FFB84D)}
+.pad.lit .flame{opacity:1}
+@keyframes flicker{from{transform:scaleY(1) scaleX(1)}to{transform:scaleY(1.5) scaleX(.8)}}
+.pad .countdown{position:absolute;left:0;right:0;bottom:118px;text-align:center;font-family:"IBM Plex Mono",monospace;font-size:12px;font-weight:600;color:var(--ink-2);opacity:1;transition:opacity .3s;white-space:nowrap}
+.pad.gone .countdown{opacity:0}
+.pad.arm .rocket{animation:rumble .1s infinite alternate}
+@keyframes rumble{from{margin-left:-1px}to{margin-left:1px}}
+.pad .smoke{position:absolute;left:50%;bottom:6px;width:90px;height:30px;transform:translateX(-50%);border-radius:50%;background:radial-gradient(rgba(255,255,255,.35),transparent 70%);opacity:0;transition:opacity .3s}
+.pad.lit .smoke{opacity:1}
+</style>
+</head>
+<body>
+<div class="bg" id="bg"></div>
+<header class="top"><div class="wrap">
+  <div class="brand">Ivan Tiutiunnyk · CV<small>Product & Project Manager</small></div>
+  <div class="spacer"></div>
+  <div class="pipe" aria-live="polite"><span id="count">0/5</span><span class="bar"><i id="fill"></i></span></div>
+  <button class="tbtn" id="sound" aria-pressed="false">Music off</button>
+</div></header>
+
+<main class="wrap">
+  <div class="hero">
+    <div>
+      <h1>Ivan Tiutiunnyk</h1>
+      <div class="title">Product & Project Manager · 10 years shipping software for startups, scale-ups and enterprise clients</div>
+      <div class="status">
+        <span class="tag"><b></b>Open to new roles</span>
+        <span class="tag">Remote · base Valencia, Spain</span>
+        <span class="tag">Currently working from APAC (UTC+8)</span>
+        <span class="tag">B2B contract or employment, EU-wide</span>
+      </div>
+    </div>
+
+    <div class="pitch">
+      <h2>Why you’d want me on the team</h2>
+      <p>I take products from idea to production and keep them growing afterwards. Client-facing from day one, comfortable with AI, regulated domains and high-load systems, and I run the delivery side so founders and engineers can focus on building. Certified Scrum Master (PSM II) and Product Owner@Scale, with a finance master’s behind the business side.</p>
+      <div class="proof">
+        <div><div class="n">+15% MoM</div><div class="l">client growth on a US B2B platform I own as PM</div></div>
+        <div><div class="n">0 → 1</div><div class="l">internal HRIS launched to 100% adoption, −70% admin time</div></div>
+        <div><div class="n">−25%</div><div class="l">time-to-market across a 6-domain client portfolio</div></div>
+        <div><div class="n">99.9%</div><div class="l">reliability on telecom platforms for Verizon, AT&T, T-Mobile</div></div>
+      </div>
+      <div class="fit">Good fit for <span>Enterprise</span><span>Established businesses</span><span>Scale-ups</span><span>Startups</span><span>Product consultancies</span><span>AI products</span><span>FinTech / HealthTech</span></div>
+      <div class="certs">Certified <span>PSM II</span><span>PSM I</span><span>Registered Product Owner@Scale</span><span>Scrum@Scale Fundamentals</span><span>ICAgile ICP-ATF</span><span>Product Manager Bootcamp, Asta Academy</span></div>
+      <div class="cta"><a class="btn" href="#releases">Review the release history</a><button class="btn ghost" id="musicbtn">Play music</button><span class="hint">Five releases, newest first. Open all five to unlock a direct line to me.</span></div>
+    </div>
+
+    <div class="contact">
+      <div class="crow"><div><div class="k">Email</div><div class="v">tyutyunnik.i.a@gmail.com</div></div><button class="mini" data-copy="tyutyunnik.i.a@gmail.com">Copy</button></div>
+      <div class="crow"><div><div class="k">LinkedIn</div><div class="v">in/ivan-tiutiunnyk</div></div><a class="mini" href="https://www.linkedin.com/in/ivan-tiutiunnyk/" target="_blank" rel="noopener">Open</a></div>
+      <div class="crow"><div><div class="k">Availability</div><div class="v">Can start on short notice</div></div></div>
+    </div>
+  </div>
+
+  <section id="domains">
+    <h2 class="sec">Domains I’ve shipped in</h2>
+    <p class="lead">Eleven industries over ten years. Regulated, high-load and AI-driven products included.</p>
+    <div class="domgrid" id="domgrid"></div>
+  </section>
+
+  <section id="releases">
+    <h2 class="sec">Release history</h2>
+    <p class="lead">My career as a changelog: newest release on top. Each entry opens to the three things that mattered; opening one passes a pipeline stage.</p>
+    <div id="rels"></div>
+  </section>
+
+  <section id="stack">
+    <h2 class="sec">Stack & credentials</h2>
+    <div class="two">
+      <div class="card"><h3>How I work</h3><div class="stack" id="stackchips"></div></div>
+      <div class="card"><h3>Certifications</h3><ul>
+        <li>Professional Scrum Master II and I (PSM II, PSM I)</li>
+        <li>Registered Product Owner@Scale · Scrum@Scale Fundamentals</li>
+        <li>ICAgile Certified Professional, Agile Team Facilitation</li>
+        <li>Product Manager Bootcamp, Asta Academy</li>
+        <li>IT Project Management (MindsetPM) · Kepner-Tregoe</li>
+      </ul></div>
+      <div class="card"><h3>Education</h3><ul>
+        <li>Master’s in Banking, University of Banking of the National Bank of Ukraine, 2016</li>
+        <li>Bachelor’s in Finance and Credit, Kharkiv Institute of Banking, 2014</li>
+      </ul></div>
+      <div class="card"><h3>Languages</h3><ul><li>English, professional</li><li>Ukrainian, native</li></ul></div>
+    </div>
+  </section>
+
+  <section id="deploy">
+    <h2 class="sec">Deploy to production</h2>
+    <p class="lead">Pipeline passes when all five releases are reviewed. Then tell me who you are and I’ll know who to expect.</p>
+    <div class="deploy locked" id="dep">
+      <div class="stages" id="stages"></div>
+      <div class="lockmsg" id="locktext">5 stages left to review.</div>
+      <div class="form" id="form" hidden>
+        <label class="fld">Your name<input id="fname" autocomplete="name"></label>
+        <label class="fld">Company<input id="fcomp" autocomplete="organization"></label>
+        <label class="fld">Role you have in mind (optional)<input id="frole"></label>
+        <div><button class="btn" id="gen">Generate my message</button></div>
+      </div>
+      <div class="conf">
+        <div class="ok-badge">✓ pipeline passed · deployed</div>
+        <p>You reviewed the whole history. Here is a message ready to send; edit anything you like.</p>
+        <div class="msg" id="msg"></div>
+        <div class="cta"><a class="btn" id="mail" href="#">Send by email</a><button class="btn ghost" id="copymsg">Copy message</button><a class="btn ghost" href="https://www.linkedin.com/in/ivan-tiutiunnyk/" target="_blank" rel="noopener">Message on LinkedIn</a></div>
+      </div>
+    </div>
+  </section>
+
+  <footer>Figures are from my full CV. Client and project names are withheld under NDA; happy to walk through them on a call.<br><button class="tbtn" id="reset" style="margin-top:12px">Reset progress</button></footer>
+</main>
+<div class="toast" id="toast"></div>
+<div class="moon" id="moon" aria-hidden="true">
+  <div class="bubble">Let’s make a great product together.</div>
+  <svg viewBox="0 0 300 230">
+    <defs><radialGradient id="mg" cx="35%" cy="30%"><stop offset="0" stop-color="#E6E9F7"/><stop offset="1" stop-color="#8F97BE"/></radialGradient></defs>
+    <path d="M40 230 C40 150 120 110 300 110 L300 230 Z" fill="url(#mg)"/>
+    <ellipse cx="120" cy="190" rx="22" ry="9" fill="#7A82A8"/><ellipse cx="118" cy="188" rx="16" ry="6" fill="#B3B9D8"/>
+    <ellipse cx="215" cy="165" rx="16" ry="7" fill="#7A82A8"/><ellipse cx="213" cy="163" rx="11" ry="4.5" fill="#B3B9D8"/>
+    <ellipse cx="260" cy="205" rx="26" ry="10" fill="#7A82A8"/><ellipse cx="257" cy="203" rx="19" ry="7" fill="#B3B9D8"/>
+    <g id="astro">
+      <!-- flag -->
+      <rect x="118" y="112" width="4" height="62" fill="#9B8CFF"/><path d="M122 113 L154 120 L122 127 Z" fill="#3DDC97"/>
+      <!-- backpack -->
+      <rect x="186" y="112" width="14" height="34" rx="4" fill="#C9CFF0"/>
+      <!-- legs and boots -->
+      <rect x="161" y="150" width="11" height="22" rx="4" fill="#F5F7FF" stroke="#9AA3CF" stroke-width="2"/><rect x="176" y="150" width="11" height="22" rx="4" fill="#F5F7FF" stroke="#9AA3CF" stroke-width="2"/>
+      <rect x="158" y="168" width="15" height="8" rx="3" fill="#9B8CFF"/><rect x="175" y="168" width="15" height="8" rx="3" fill="#9B8CFF"/>
+      <!-- torso -->
+      <rect x="156" y="112" width="36" height="42" rx="10" fill="#F5F7FF" stroke="#9AA3CF" stroke-width="2"/>
+      <rect x="163" y="120" width="22" height="12" rx="3" fill="#1C2747"/><circle cx="168" cy="126" r="2" fill="#3DDC97"/><circle cx="175" cy="126" r="2" fill="#FFB84D"/><circle cx="182" cy="126" r="2" fill="#5FB2FF"/>
+      <!-- right arm, down -->
+      <rect x="190" y="116" width="10" height="30" rx="5" fill="#F5F7FF" stroke="#9AA3CF" stroke-width="2"/><circle cx="195" cy="150" r="6" fill="#F5F7FF" stroke="#9AA3CF" stroke-width="2"/>
+      <!-- left arm, raised: upper arm to elbow, forearm up, hand waves at the wrist -->
+      <rect x="142" y="118" width="16" height="10" rx="5" fill="#F5F7FF" stroke="#9AA3CF" stroke-width="2"/>
+      <rect x="140" y="96" width="10" height="28" rx="5" fill="#F5F7FF" stroke="#9AA3CF" stroke-width="2"/>
+      <g class="wave"><path d="M139 95 Q138 84 145 83 Q152 82 152 92 Q152 98 145 98 Z" fill="#F5F7FF" stroke="#9AA3CF" stroke-width="2"/></g>
+      <!-- helmet -->
+      <circle cx="174" cy="98" r="19" fill="#F5F7FF" stroke="#9AA3CF" stroke-width="2"/>
+      <path d="M160 97 A14 14 0 0 1 188 97 L188 104 A14 11 0 0 1 160 104 Z" fill="#1C2747"/>
+      <path d="M165 94 Q174 89 183 94" stroke="#5FB2FF" stroke-width="2.5" fill="none" opacity=".85"/>
+      <rect x="158" y="110" width="32" height="6" rx="3" fill="#C9CFF0"/>
+    </g>
+  </svg>
+</div>
+<div class="pad" id="pad" aria-hidden="true">
+  <div class="countdown" id="cd" hidden></div>
+  <div class="rocket" id="rocket"><svg viewBox="0 0 34 84">
+    <g transform="translate(0 66)"><g class="flame"><path d="M8 0 L17 40 L26 0 Z" fill="#FF7A45"/><path d="M11 0 L17 30 L23 0 Z" fill="#FFB84D"/><path d="M14 0 L17 16 L20 0 Z" fill="#FFF4D6"/></g></g>
+    <path d="M17 0 C24 10 26 24 26 42 L26 60 L8 60 L8 42 C8 24 10 10 17 0 Z" fill="#F2F4FF"/>
+    <path d="M17 0 C24 10 26 24 26 42 L17 42 Z" fill="#C9CFF0"/>
+    <path d="M8 46 L0 62 L8 60 Z" fill="#9B8CFF"/><path d="M26 46 L34 62 L26 60 Z" fill="#9B8CFF"/>
+    <rect x="8" y="60" width="18" height="6" rx="2" fill="#5C6390"/>
+    <circle cx="17" cy="26" r="5" fill="#5FB2FF" stroke="#9B8CFF" stroke-width="2"/>
+  </svg></div>
+</div>
+
+<script>
+const REL=[
+ {v:"v5.0",title:"Product Manager · Django Stars",when:"May 2025 – now",sum:"Owns product strategy for a US B2B platform and shipped an internal HRIS 0→1.",
+  kpis:[["+15% MoM","active clients"],["+20%","active users"],["100%","HRIS adoption"],["−70%","admin time"]],
+  bullets:["Drive strategy, roadmap and backlog for a market-leading US waste-management platform; growth is measured monthly and has held at +15% clients.","Launched a custom HR information system with employee self-service company-wide; automated reporting cut administrative work by 70%.","Prioritise across concurrent products so engineering time goes to the highest-impact features."],
+  tools:["Product strategy","Roadmapping","KPI design","Data analysis","Stakeholder management"]},
+ {v:"v4.0",title:"Project Manager · Django Stars",when:"Mar 2022 – now",sum:"Delivery lead for international clients across six domains, including two AI products.",
+  kpis:[["6","domains"],["+30%","AI route efficiency"],["+80%","EdTech engagement"],["−25%","time-to-market"]],
+  bullets:["Led delivery for clients in Logistics, EdTech, Healthcare, FinTech, Travel and Real Estate with teams of 8–12.","Shipped AI-driven products: ML route planning (+30% efficiency) and personalised learning paths (+80% engagement).","Kept Healthcare and FinTech deliveries at 100% compliance while cutting time-to-market by a quarter."],
+  tools:["Scrum / Kanban","Release management","Client management","AI / ML delivery","Jira · Confluence · Figma"]},
+ {v:"v3.0",title:"Project Manager · GlobalLogic",when:"May 2021 – Apr 2022",sum:"Enterprise telecom delivery for Ericsson and Tier-1 US carriers.",
+  kpis:[["15–20","engineers"],["99.9%","reliability"],["95%","milestone accuracy"]],
+  bullets:["Ran mission-critical infrastructure projects for Verizon, AT&T and T-Mobile under telecom-grade quality rules.","Applied high-availability and scalable architecture patterns for platforms serving millions of concurrent users.","Managed stakeholders across US and EMEA time zones."],
+  tools:["Telecom delivery","Risk management","High-availability systems","Multi-time-zone stakeholders"]},
+ {v:"v2.0",title:"Procurement Project Manager · Japan Tobacco International",when:"Jun 2019 – Apr 2021",sum:"Digital transformation of a global duty-free business.",
+  kpis:[["−20%","IT procurement cost"],["Global","duty-free markets"]],
+  bullets:["Directed IT projects for Marketing, Sales and Digital Business units of JTI’s Worldwide Duty Free operations.","Cut annual IT procurement costs by 20% with a competitive bidding framework and tighter vendor management.","Translated business requirements into technical specifications and smooth global deployments."],
+  tools:["Vendor management","Budget & ROI","RFP / bidding","Change management"]},
+ {v:"v1.0",title:"Data Management · Japan Tobacco International",when:"Jul 2016 – Jun 2019",sum:"Data, pricing and stock analytics for a global channel; first bridge between business and IT.",
+  kpis:[["−25%","out-of-stock incidents"]],
+  bullets:["Owned sales reporting, pricing analysis and out-of-stock tracking across global markets.","Built the reporting that cut out-of-stock incidents by a quarter."],
+  tools:["Reporting","Pricing analysis","Stock tracking"]}
+];
+const STACK=["Product discovery","Roadmaps & OKRs","Backlog prioritisation","Scrum@Scale","Release management","Client & account management","Risk & scope control","0→1 launches","AI / ML products","Regulated domains","High-load platforms","Jira","Confluence","Miro","Figma"];
+let seen=new Set();try{const s=localStorage.getItem("cv-seen");if(s)seen=new Set(JSON.parse(s))}catch(e){}
+const save=()=>{try{localStorage.setItem("cv-seen",JSON.stringify([...seen]))}catch(e){}};
+
+document.getElementById("rels").innerHTML=REL.map((r,i)=>`<div class="rel" id="rel-${i}">
+ <button class="rel-h" aria-expanded="false" aria-controls="relb-${i}" data-i="${i}">
+   <span class="ver">${r.v}</span>
+   <span><div class="rel-t">${r.title}</div><div class="rel-s"><b>${r.when}</b> · ${r.sum}</div></span>
+   <span class="st"><i></i><span class="stlab">Review</span><span class="chev">▾</span></span>
+ </button>
+ <div class="rel-b" id="relb-${i}">
+   <div class="kpis">${r.kpis.map(k=>`<span class="kpi"><b>${k[0]}</b> ${k[1]}</span>`).join("")}</div>
+   <ul>${r.bullets.map(b=>`<li>${b}</li>`).join("")}</ul>
+   <div class="chips">${r.tools.map(t=>`<span class="chip">${t}</span>`).join("")}</div>
+ </div></div>`).join("");
+const DOMAINS=[
+ ["🚨","Waste management","US B2B platform, product owner, +15% MoM"],
+ ["📦","Logistics","AI route planning, +30% efficiency",1],
+ ["🎓","EdTech","Personalised learning, +80% engagement",1],
+ ["🩺","HealthTech","Regulated delivery, 100% compliance"],
+ ["💳","FinTech","Compliance-first, high-stakes releases"],
+ ["✈️","Travel","High-load consumer platforms"],
+ ["🏢","PropTech","Real-estate platforms at scale"],
+ ["👥","HR tech","HRIS launched 0→1, 100% adoption"],
+ ["📡","Telecom","Ericsson, Tier-1 US carriers, 99.9%"],
+ ["🛒","Retail / duty-free","JTI global channel, IT and procurement"],
+ ["🤖","AI / ML products","Two ML-backed products shipped to production",1]
+];
+document.getElementById("domgrid").innerHTML=DOMAINS.map(d=>`<div class="dom"><div class="ic">${d[0]}</div><div class="nm">${d[1]}</div><div class="ds">${d[2]}</div>${d[3]?'<span class="ai">AI</span>':''}</div>`).join("");
+document.getElementById("stackchips").innerHTML=STACK.map(s=>`<span class="chip">${s}</span>`).join("");
+document.getElementById("stages").innerHTML=REL.map(()=>`<div class="stage"></div>`).join("");
+
+document.querySelectorAll(".rel-h").forEach(h=>h.onclick=()=>{const i=+h.dataset.i,el=document.getElementById("rel-"+i),open=!el.classList.contains("open");
+ el.classList.toggle("open",open);h.setAttribute("aria-expanded",open);
+ if(open&&!seen.has(i)){seen.add(i);save();stampSound();if(seen.size===REL.length)setTimeout(()=>{toast("All five releases reviewed. Pipeline passed.");beep(880,"sine",.3)},300)}
+ render()});
+
+function render(){const n=seen.size;document.getElementById("count").textContent=`${n}/${REL.length}`;document.getElementById("fill").style.width=(n/REL.length*100)+"%";
+ REL.forEach((r,i)=>{const el=document.getElementById("rel-"+i);el.classList.toggle("done",seen.has(i));el.querySelector(".stlab").textContent=seen.has(i)?"Reviewed":"Review"});
+ document.querySelectorAll(".stage").forEach((s,i)=>s.classList.toggle("ok",i<n));
+ const dep=document.getElementById("dep"),form=document.getElementById("form");
+ if(n===REL.length){dep.classList.remove("locked");form.hidden=false;document.getElementById("locktext").textContent="Pipeline passed. Fill in the form below."}
+ else{dep.classList.add("locked");form.hidden=true;document.getElementById("locktext").textContent=`${REL.length-n} stage${REL.length-n>1?"s":""} left to review.`}}
+
+/* sound + lo-fi techno loop (generated in the browser, no files) */
+let soundOn=false,ac=null;
+function beep(f,t,d){if(!soundOn)return;try{ac=ac||new (window.AudioContext||window.webkitAudioContext)();const o=ac.createOscillator(),g=ac.createGain();o.type=t;o.frequency.value=f;g.gain.value=.0001;o.connect(g);g.connect(ac.destination);const n=ac.currentTime;g.gain.exponentialRampToValueAtTime(.12,n+.01);g.gain.exponentialRampToValueAtTime(.0001,n+d);o.start(n);o.stop(n+d)}catch(e){}}
+const stampSound=()=>{beep(520,"square",.09);setTimeout(()=>beep(780,"square",.14),70)};
+let music={on:false,timer:null,next:0,step:0,gain:null,noise:null,dist:null};
+/* lo-fi rock loop: 92 bpm, two 8-bar sections, soft drums, filtered guitar, vinyl crackle */
+const SEC_A=[[40,47,52,56],[43,50,55,59],[45,52,57,60],[38,45,50,54]];   // E – G – A – D
+const SEC_B=[[36,43,48,52],[43,50,55,59],[45,52,57,60],[47,54,59,62]];   // C – G – A – B
+const hz=m=>440*Math.pow(2,(m-69)/12);
+function curve(k){const n=2048,c=new Float32Array(n);for(let i=0;i<n;i++){const x=i*2/n-1;c[i]=(1+k)*x/(1+k*Math.abs(x))}return c}
+function gtrBus(){if(!music.dist){music.dist=ac.createWaveShaper();music.dist.curve=curve(3);const f=ac.createBiquadFilter();f.type="lowpass";f.frequency.value=1600;f.Q.value=.5;const w=ac.createOscillator(),wg=ac.createGain();w.frequency.value=.35;wg.gain.value=220;w.connect(wg);wg.connect(f.frequency);w.start();music.dist.connect(f);f.connect(music.gain)}return music.dist}
+function gtr(m,t,d,vol){const o=ac.createOscillator(),g=ac.createGain();o.type="sawtooth";o.frequency.value=hz(m);o.detune.value=(Math.random()-.5)*12;g.gain.setValueAtTime(.0001,t);g.gain.exponentialRampToValueAtTime(vol,t+.02);g.gain.exponentialRampToValueAtTime(.0001,t+d);o.connect(g);g.connect(gtrBus());o.start(t);o.stop(t+d+.02)}
+function bass(m,t,d){const o=ac.createOscillator(),g=ac.createGain(),f=ac.createBiquadFilter();f.type="lowpass";f.frequency.value=420;o.type="triangle";o.frequency.value=hz(m);g.gain.setValueAtTime(.0001,t);g.gain.exponentialRampToValueAtTime(.16,t+.02);g.gain.exponentialRampToValueAtTime(.0001,t+d);o.connect(f);f.connect(g);g.connect(music.gain);o.start(t);o.stop(t+d+.02)}
+function kick(t){const o=ac.createOscillator(),g=ac.createGain();o.type="sine";o.frequency.setValueAtTime(120,t);o.frequency.exponentialRampToValueAtTime(48,t+.1);g.gain.setValueAtTime(.4,t);g.gain.exponentialRampToValueAtTime(.0001,t+.28);o.connect(g);g.connect(music.gain);o.start(t);o.stop(t+.3)}
+function noiseBuf(){if(!music.noise){const b=ac.createBuffer(1,ac.sampleRate,ac.sampleRate),d=b.getChannelData(0);for(let i=0;i<d.length;i++)d[i]=Math.random()*2-1;music.noise=b}return music.noise}
+function snare(t){const s=ac.createBufferSource(),g=ac.createGain(),f=ac.createBiquadFilter();s.buffer=noiseBuf();f.type="bandpass";f.frequency.value=1400;f.Q.value=.9;g.gain.setValueAtTime(.18,t);g.gain.exponentialRampToValueAtTime(.0001,t+.14);s.connect(f);f.connect(g);g.connect(music.gain);s.start(t);s.stop(t+.18)}
+function hat(t,open){const s=ac.createBufferSource(),g=ac.createGain(),f=ac.createBiquadFilter();s.buffer=noiseBuf();f.type="highpass";f.frequency.value=6500;g.gain.setValueAtTime(open?.045:.03,t);g.gain.exponentialRampToValueAtTime(.0001,t+(open?.2:.04));s.connect(f);f.connect(g);g.connect(music.gain);s.start(t);s.stop(t+.22)}
+function crackle(){if(music.crack)return;const s=ac.createBufferSource(),g=ac.createGain(),f=ac.createBiquadFilter();s.buffer=noiseBuf();s.loop=true;f.type="bandpass";f.frequency.value=3000;f.Q.value=.3;g.gain.value=.012;s.connect(f);f.connect(g);g.connect(music.gain);s.start();music.crack=s}
+function schedule(){if(!music.on)return;const BPM=92,st=60/BPM/2;crackle();while(music.next<ac.currentTime+.5){const bar=Math.floor(music.step/8),sec=Math.floor(bar/8)%2,ch=(sec?SEC_B:SEC_A)[Math.floor(bar/2)%4],s=music.step%8,t=music.next,swing=(s%2?st*.12:0);
+ if(s===0||s===5)kick(t+swing);if(s===2||s===6)snare(t+swing);if(s%2===0||bar%4===3)hat(t+swing,s===7);
+ if(bar%2===0&&s===0)ch.forEach((m,i)=>gtr(m,t+i*.03,st*7,.045));            // strum once per two bars
+ if(bar%2===1&&[0,2,3,5,6].includes(s))gtr(ch[[0,1,2,3,1][[0,2,3,5,6].indexOf(s)]]+12,t+swing,st*1.6,.035); // arpeggio
+ if(s===0||s===3||s===6)bass(ch[0]-12,t+swing,st*2.2);
+ music.next+=st;music.step++}music.timer=setTimeout(schedule,120)}
+function toggleMusic(){ac=ac||new (window.AudioContext||window.webkitAudioContext)();if(ac.state==="suspended")ac.resume();music.on=!music.on;soundOn=music.on;
+ if(music.on){if(!music.gain){music.gain=ac.createGain();const c=ac.createDynamicsCompressor();c.threshold.value=-16;c.ratio.value=5;music.gain.connect(c);c.connect(ac.destination)}music.gain.gain.setTargetAtTime(.55,ac.currentTime,.3);music.next=ac.currentTime+.05;music.step=0;schedule()}
+ else{clearTimeout(music.timer);if(music.gain)music.gain.gain.setTargetAtTime(0,ac.currentTime,.2);if(music.crack){try{music.crack.stop()}catch(e){}music.crack=null}}
+ document.querySelectorAll("#sound,#musicbtn").forEach(b=>{b.setAttribute("aria-pressed",music.on);b.textContent=b.id==="sound"?(music.on?"Music on":"Music off"):(music.on?"Pause music":"Play music")})}
+document.getElementById("sound").onclick=toggleMusic;document.getElementById("musicbtn").onclick=toggleMusic;
+
+let tt;function toast(t){const el=document.getElementById("toast");el.textContent=t;el.classList.add("on");clearTimeout(tt);tt=setTimeout(()=>el.classList.remove("on"),2600)}
+async function copy(t){try{await navigator.clipboard.writeText(t);toast("Copied")}catch(e){toast("Copy failed. Select the text manually.")}}
+document.querySelectorAll("[data-copy]").forEach(b=>b.onclick=()=>copy(b.dataset.copy));
+document.getElementById("gen").onclick=()=>{
+ const name=document.getElementById("fname").value.trim()||"a recruiter",comp=document.getElementById("fcomp").value.trim(),role=document.getElementById("frole").value.trim();
+ const m=`Hi Ivan,\n\nThis is ${name}${comp?" from "+comp:""}. I went through your interactive CV${role?` and I have a ${role} role in mind`:""}. The product growth work and the 0→1 HRIS launch stood out.\n\nCould we find 30 minutes this week? I can work around your APAC hours.\n\nBest regards,\n${name}`;
+ document.getElementById("msg").textContent=m;
+ document.getElementById("mail").href="mailto:tyutyunnik.i.a@gmail.com?subject="+encodeURIComponent("Interactive CV: let’s talk")+"&body="+encodeURIComponent(m);
+ document.getElementById("copymsg").onclick=()=>copy(m);document.getElementById("dep").classList.add("open");beep(990,"sine",.2)};
+document.getElementById("reset").onclick=()=>{seen=new Set();save();document.getElementById("dep").classList.remove("open");document.querySelectorAll(".rel").forEach(r=>r.classList.remove("open"));render();toast("Progress cleared")};
+render();
+/* starfield */
+(()=>{const bg=document.getElementById("bg");const n=window.innerWidth<640?55:110;for(let i=0;i<n;i++){const s=document.createElement("i");const big=Math.random()<.12;const sz=big?3:(Math.random()<.5?1:2);s.style.cssText=`left:${Math.random()*100}%;top:${Math.random()*100}%;width:${sz}px;height:${sz}px;--d:${2.5+Math.random()*5}s;--dl:${-Math.random()*6}s`;if(big)s.className="big";bg.append(s)}
+ for(let i=0;i<2;i++){const sh=document.createElement("div");sh.className="shoot";sh.style.cssText=`left:${55+Math.random()*40}%;top:${5+Math.random()*30}%;--dl:${-Math.random()*9+i*4}s`;bg.append(sh)}})();
+/* rocket: sits on the pad on the right; every scroll down lifts it a little, and it clears the screen as you reach the bottom */
+(()=>{const pad=document.getElementById("pad"),r=document.getElementById("rocket"),cd=document.getElementById("cd");const reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;let target=0,cur=0,raf=null;
+ function progress(){const max=document.documentElement.scrollHeight-window.innerHeight;return max>0?Math.min(1,(window.scrollY||0)/max):1}
+ function want(){const p=progress();const h=window.innerHeight+220;const e=p*p*(3-2*p);return e*h}
+ function tick(){cur+=(target-cur)*0.08;const sway=Math.sin(cur/80)*4*Math.min(1,cur/250);r.style.transform=`translateX(-50%) translateY(${-cur}px) rotate(${sway}deg)`;if(Math.abs(target-cur)>0.5)raf=requestAnimationFrame(tick);else raf=null}
+ function onScroll(){const p=progress();target=want();pad.classList.toggle("lit",p>.02);pad.classList.toggle("arm",false);pad.classList.toggle("gone",p>.02);cd.textContent="scroll to launch";document.getElementById("moon").classList.toggle("in",p>.93);
+  if(reduce){cur=target;r.style.transform=`translateX(-50%) translateY(${-cur}px)`;return}if(!raf)raf=requestAnimationFrame(tick)}
+ addEventListener("scroll",onScroll,{passive:true});addEventListener("resize",onScroll);onScroll()})();
+</script>
+</body>
+</html>
